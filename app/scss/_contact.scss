@@ -1,0 +1,39 @@
+/* CONTACT */
+
+.section--contact {
+	color: $color-fg;
+	background-color: $color-bg;
+}
+
+.contact {
+	display: grid;
+	grid-gap: $spacing;
+	grid:
+		'title'
+		'body'
+		'form';
+
+	&__title {
+		grid-area: title;
+	}
+
+	&__body {
+		grid-area: body;
+	}
+
+	&__form {
+		grid-area: form;
+
+		.button {
+			width: 100%;
+		}
+	}
+
+	@media (min-width: 35em) {
+		grid:
+			'title title'
+			'body form'
+			/ 1fr 1fr;
+	}
+}
+

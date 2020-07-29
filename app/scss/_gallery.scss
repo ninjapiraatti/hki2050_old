@@ -1,0 +1,35 @@
+/* GALLERY */
+
+$gallery-gutter: $spacing !default;
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: -$gallery-gutter / 2;
+	list-style: none;
+
+	&__item {
+		width: calc(100% / 2);
+		padding: $gallery-gutter / 2;
+	}
+
+	&__image {
+		transition: all 0.3s ease-in-out;
+		display: block;
+		box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+	}
+	.honey:hover {
+		box-shadow: 0px 10px 20px transparentize($color: $color-honey, $amount: .5);
+	}
+	.loop:hover {
+		box-shadow: 0px 10px 20px transparentize($color: $color-loop, $amount: .5);
+	}
+	.hbp:hover {
+		box-shadow: 0px 10px 20px transparentize($color: $color-hbp, $amount: .5);
+	}
+	.hxgn:hover {
+		box-shadow: 0px 10px 20px transparentize($color: $color-hxgn, $amount: .5);
+	}
+}
+

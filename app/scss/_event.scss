@@ -1,0 +1,29 @@
+.event {
+	&__date {
+		padding-top: 0.2rem;
+
+		font-family: $font-sans;
+		font-size: 0.8rem;
+	}
+}
+
+.listed-event {
+	&__date {
+		@extend .event__date;
+	}
+
+	&__text {
+		width: 100%;
+		// padding-left: 80px;
+		font-size: 0.8rem;
+	}
+}
+
+.page-event {
+	.event {
+		&__date {
+			margin: -$spacing * 2 0 $spacing * 2;
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,65 @@
+/* RESET	*/
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	line-height: 1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+	display: block;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+mark {
+	font-style: italic;
+	font-weight: 600;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+table {
+	border-collapse:collapse;
+	border-spacing: 0;
+}
+
+b, strong {
+	font-weight: 600;
+}
+
+i, em {
+	font-style: italic;
+}
+
+img {
+	display: inline-block;
+	max-width: 100%;
+	image-rendering: optimizeQuality;
+	-ms-interpolation-mode: bicubic;
+}

@@ -1,0 +1,6 @@
+// Assumes $font-size is in rem
+@function baseline($font-size, $snap: 1) {
+	$lines: round($font-size / ($line-height * $snap)) * $snap;
+	@return $lines * $line-height / $font-size;
+}
+

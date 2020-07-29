@@ -1,0 +1,33 @@
+/* HELPERS */
+
+.screen-reader-text {
+	position: absolute !important;
+	height: 1px; width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+}
+
+.no-scroll {
+	overflow: hidden;
+}
+
+.id-offset:before {
+	content: '';
+	display: block;
+	margin-top: -$navbar-height - $spacing;
+	padding-top: $navbar-height + $spacing;
+}
+
+.dn {
+	display: none;
+}
+
+.db {
+	display: block;
+}
+
+.mt1 {
+	margin-top: $spacing;
+}
+

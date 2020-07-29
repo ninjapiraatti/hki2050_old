@@ -1,0 +1,77 @@
+/* SECTION */
+/*
+Component specific section modifications should be in the component's .scss file, e.g.
+.section--blog @ _blog.scss
+.section--gallery @ _gallery.scss
+*/
+
+.section {
+	@extend %wrapper;
+
+	padding-top: $wrapper-padding;
+	padding-bottom: $wrapper-padding;
+
+	&:not(:last-child) {
+		border-bottom: solid 1px $color-separator;
+	}
+
+	// This assumes $wrapper-padding is Xvw
+	@media (min-width: $wrapper-width * (1 + $wrapper-padding / 1vw / 50)) {
+		padding-top: calc(50vw - #{$wrapper-width / 2});
+		padding-bottom: calc(50vw - #{$wrapper-width / 2});
+	}
+
+	// This assumes $spacing is Xrem
+	@media (min-width: $wrapper-width + ($spacing * 6 / 1rem * ($base-font-size / 100% * 1rem))) {
+		padding-top: $spacing * 3;
+		padding-bottom: $spacing * 3;
+	}
+
+	// Prevent side scrolling
+	overflow: hidden;
+
+	.site-content > &:first-child {
+		margin-top: $navbar-height;
+	}
+
+	&--invert {
+		color: $color-bg;
+		background-color: $color-fg;
+	}
+
+	&--left_image,
+	&--right_image {
+		border-bottom: 0 !important;
+		background-size: 300px 300px;
+		padding-bottom: 300px;
+		background-repeat: no-repeat;
+		@media (min-width: 600px) {
+			background-size: 200px 200px;
+			padding-bottom: $spacing * 2;
+		}
+		@media (min-width: 900px) {
+			background-size: 400px 400px;
+		}
+	}
+	
+	&--left_image {
+		background-position: bottom left;
+		@media (min-width: 600px) {
+			padding-left: 200px;
+		}
+		@media (min-width: 900px) {
+			padding-left: 400px;
+		}
+	}
+
+	&--right_image {
+		background-position: bottom right;
+		@media (min-width: 600px) {
+			padding-right: 200px;
+		}
+		@media (min-width: 900px) {
+			padding-right: 400px;
+		}
+	}
+}
+

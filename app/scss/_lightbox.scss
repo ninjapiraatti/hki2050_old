@@ -1,0 +1,90 @@
+/* LIGHTBOX */
+
+.lightbox {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 9;
+
+	background: rgba(255,255,255, 0.9);
+	transition: opacity 0.25s cubic-bezier(0.5, 0, 0.5, 1);
+
+	&[aria-hidden=true] {
+		display: none;
+	}
+
+	&--closed {
+		opacity: 0;
+	}
+
+	&--closed &__content {
+		transform: scale(0.96);
+	}
+
+	&__close {
+		position: absolute;
+		top: 50px;
+		right: 50px;
+	}
+
+	svg {
+		pointer-events: none;
+	}
+
+	&__prev,
+	&__next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&__prev {
+		left: $spacing;
+	}
+
+	&__next {
+		right: $spacing;
+	}
+
+	&__content {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow: auto;
+		display: flex;
+		scroll-snap-type: x mandatory;
+		position: relative;
+		transform: translateZ(0); // A hack for smoother scrolling (with large images)
+		transition: transform 0.25s cubic-bezier(0.4, 0, 0.4, 1.5);
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	&__image {
+		width: 100%;
+		flex-shrink: 0;
+		scroll-snap-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& > img {
+			display: block;
+			max-width: calc(100vw - #{$spacing * 2});
+			max-height: calc(100vh - #{$spacing * 2});
+			box-shadow: 0 $spacing $spacing * 3 rgba(#000, 0.2);
+		}
+	}
+
+}
+
+// Prevent flashing when loading
+html:not(.no-js) .lightbox:not(.lightbox--open):not(.lightbox--closed) {
+	display: none;
+}
+

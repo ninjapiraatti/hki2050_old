@@ -1,0 +1,189 @@
+/* TYPOGRAPHY */
+
+html {
+	font-size: $base-font-size;
+	@media (min-width: $breakpoint-l) {
+		font-size: 150%;
+	}
+	@media (min-width: $breakpoint-xl) {
+		font-size: 180%;
+	}
+}
+
+body {
+	font-family: $font-sans;
+	font-size: 0.9rem;
+	line-height: $line-height;
+}
+
+.small {
+	$font-size: 0.8rem;
+	font-size: $font-size;
+	line-height: baseline($font-size);
+}
+
+a,
+.link {
+	outline: none;
+	color: $color-link;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+
+	&:hover,
+	&:focus {
+		color: $color-link-hover;
+	}
+
+	&:active {
+		color: $color-link-active;
+	}
+
+	&.unstyled:not(:hover):not(:active):not(:focus) {
+		color: inherit;
+	}
+}
+
+sub, sup {
+	font-size: 0.75em;
+	line-height: 0;
+	position: relative;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	margin: $spacing 0;
+	&:first-child { margin-top: 0; }
+	&:last-child { margin-bottom: 0; }
+	font-family: $font-heading;
+}
+
+.h1 {
+	$font-size: 2.488rem;
+	font-size: $font-size;
+	line-height: baseline($font-size);
+}
+
+.h2 {
+	$font-size: 1.95rem;
+	font-size: $font-size;
+	line-height: baseline($font-size, 0.5);
+}
+
+.h3 {
+	$font-size: 1.728rem;
+	font-size: $font-size;
+	line-height: baseline($font-size, 0.5);
+}
+
+.h4 {
+	$font-size: 1.44rem;
+	font-size: $font-size;
+	line-height: baseline($font-size, 0.5);
+}
+
+.h5 {
+	$font-size: 1.2rem;
+	font-size: $font-size;
+	line-height: baseline($font-size, 0.5);
+}
+
+.h6 {
+	$font-size: 1rem;
+	font-size: $font-size;
+	line-height: baseline($font-size);
+}
+
+blockquote {
+	padding: $spacing / 2;
+	border-left: solid 0.3em $color-fg;
+	background: $color-bg-dim;
+	font-size: 1.25em;
+	line-height: baseline(1.25em);
+	font-style: italic;
+	font-weight: lighter;
+}
+
+.wysiwyg {
+	&:not(:first-child) { margin-top: $spacing; }
+	&:not(:last-child) { margin-bottom: $spacing; }
+
+	* + *:not(li) {
+		margin-top: $spacing;
+	}
+
+	// Firefox has a bug
+  br { margin: 0; }
+
+	h1 { @extend .h1 }
+	h2 { @extend .h2 }
+	h3 { @extend .h3 }
+  h4 { @extend .h4 }
+  h5 { @extend .h5 }
+  h6 { @extend .h6 }
+
+	small { @extend .small }
+
+	ul {
+		list-style: disc;
+	}
+
+	ol {
+		list-style: decimal;
+	}
+
+	ul ul,
+	ul ol,
+	ol ul,
+	ol ol {
+		margin-left: $spacing;
+	}
+
+  figcaption {
+    font-size: 0.9rem;
+	font-style: italic;
+	text-align: center;
+	margin-top: 5px;
+  }
+
+	// ProcessWire classes
+
+	.align_left,
+	.align_right,
+	.align_center {
+		margin-bottom: $spacing / 2;
+	}
+
+	.align_left {
+		float: left;
+		margin-right: $spacing / 2;
+	}
+
+	.align_right {
+		float: right;
+		margin-left: $spacing / 2;
+	}
+
+	.align_center {
+		float: none;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+pre {
+	font-family: $font-mono;
+}
+

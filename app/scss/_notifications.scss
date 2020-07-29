@@ -1,0 +1,16 @@
+/* NOTIFICAITONS */
+
+.notification {
+	border-left: solid 4px currentColor;
+	padding: $spacing / 4 $spacing / 2;
+	border-radius: 2px;
+	color: $color-info;
+	box-shadow: 0 0 0 1px rgba(#000, 0.05), 0 5px 15px rgba(#000, 0.1);
+
+	&:not(:first-child) { margin-top: $spacing; }
+	&:not(:last-child) { margin-bottom: $spacing; }
+
+	&--error {
+		color: $color-error;
+	}
+}

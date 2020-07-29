@@ -1,0 +1,22 @@
+/* LIUKURI */
+
+.liukuri {
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	display: flex;
+	scroll-snap-type: x mandatory;
+	position: relative;
+	transform: translateZ(0); // A hack for smoother scrolling (with large images)
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	& > li {
+		width: 100%;
+		flex-shrink: 0;
+		scroll-snap-align: center;
+	}
+}
+

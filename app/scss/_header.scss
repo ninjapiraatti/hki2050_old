@@ -1,0 +1,42 @@
+/* HEADER */
+
+.site-header {
+	@extend %wrapper;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	flex-shrink: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $color-bg;
+	box-shadow: 0 1px 0 $color-separator;
+	z-index: 5;
+
+	&--mobile {
+		max-height: 100vh;
+		overflow-x: hidden;
+
+		& > nav {
+			width: 100%;
+		}
+	}
+
+	&--desktop {
+		.nav-button {
+			display: none;
+		}
+	}
+}
+
+// no-js fallback
+html.no-js .site-header {
+	position: static;
+	& > nav {
+		width: 100%;
+	}
+}
+

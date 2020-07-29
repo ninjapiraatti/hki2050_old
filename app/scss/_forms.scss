@@ -1,0 +1,56 @@
+/* FORMS */
+/* ProcessWire form stuff, basic input element styling should be in _inputs.scss */
+
+.form-fields {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: -$spacing / 2;
+}
+
+.form-field {
+	width: 100%;
+	margin-top: $spacing / 2;
+
+	&__label {
+		.form-field--required &:after {
+			content: '\00a0\002A';
+		}
+	}
+
+	&__content {
+
+	}
+
+	&__description {
+
+	}
+
+	&__notes {
+
+	}
+
+	&--error {
+		input[type="text"],
+		input[type="number"],
+		input[type="tel"],
+		input[type="email"],
+		select,
+		textarea {
+			color: $color-error;
+			background: mix($color-error, #fff, 10%);
+			border-color: $color-error;
+		}
+
+		.form-field__label,
+		.form-field__content:first-child > label > span, // Checkbox label
+		.select-wrapper {
+			color: $color-error;
+		}
+
+		::placeholder {
+			color: rgba($color-error, 0.33);
+		}
+	}
+}
+

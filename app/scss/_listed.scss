@@ -1,0 +1,26 @@
+/* LISTED */
+
+.listed {
+	&__item {
+		&:not(:first-child) { padding-top: $spacing / 2; }
+		&:not(:last-child) { padding-bottom: $spacing / 2; }
+
+		& + & {
+			border-top: solid 1px $color-separator;
+		}
+	}
+
+	&__body,
+	&__footer, {
+		margin-top: $spacing / 2;
+	}
+
+	&__title {
+		@extend .h4;
+		margin-bottom: 0;
+
+		& > a {
+			@extend a.unstyled;
+		}
+	}
+}

@@ -1,0 +1,231 @@
+/* LAYOUT  */
+
+html {
+	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	color: $color-fg;
+	background-color: $color-bg;
+}
+
+
+
+.site-content {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+
+	& > * {
+		flex-shrink: 0;
+		&:last-child {
+			flex-grow: 1;
+		}
+	}
+}
+
+
+
+%wrapper {
+	padding-left: $wrapper-padding;
+	padding-right: $wrapper-padding;
+
+	// This assumes $wrapper-padding is Xvw
+	@media (min-width: $breakpoint-sm) {
+		padding-left: 10vw;
+		padding-right: 10vw;
+	}
+	@media (min-width: $breakpoint-xl) {
+		padding-left: 15vw;
+		padding-right: 15vw;
+	}
+}
+
+
+
+.image-wrapper {
+	position: relative;
+	height: 0;
+
+	& > img {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+
+// Use with .grid.grid--gutter
+.columns {
+	&__main { flex: 9999 1 30em; }
+	&__sidebar { flex: 1 1 20em; }
+}
+
+.separate {
+	& + & {
+		margin-top: $spacing;
+		padding-top: $spacing;
+		border-top: solid 1px $color-separator;
+	}
+
+	&--compact {
+		& + & {
+			margin-top: $spacing / 2;
+			padding-top: $spacing / 2;
+		}
+	}
+}
+#intro {
+	position: relative;
+	@media (min-width: $breakpoint-sm) {
+		min-height: calc(100vh - 48px);
+	}
+	@media (min-width: $breakpoint-l) {
+		min-height: calc(100vh - 72px);
+	}
+}
+
+.intro {
+	&__image {
+		width: 100%;
+		@media (min-width: $breakpoint-sm) {
+			width: 40%;
+		}
+		text-align: center;
+		img {
+			border-radius: 50%;
+			border: 0.1px solid #555;
+			padding: 2px;
+			max-width: 50%;
+			@media (min-width: $breakpoint-sm) {
+				max-width: 100%;
+			}
+		}
+		h1 {
+			margin-bottom: 5px;
+		}
+	}
+	&__summary {
+		width: 100%;
+		@media (min-width: $breakpoint-sm) {
+			width: 60%;
+			padding-left: calc(10vw - 48px);
+		}
+		@media (min-width: $breakpoint-l) {
+			align-self: center;
+			margin-top: -5%;
+		}
+		@media (max-width: 1300) {
+			padding-left: calc(50vw - #{$wrapper-width / 2});
+		}
+		p {
+			font-size: 0.8rem;
+		}
+		.h2 {
+			margin-top: 12px;
+			margin-bottom: 20px;
+		}
+		.h3 {
+			font-size: 1rem;
+			margin-bottom: 4px;
+			@media (min-width: $breakpoint-l) {
+				margin-bottom: 8px;
+				margin-top: 20px;
+			}
+		}
+		.skill {
+			margin-bottom: 12px;
+			border-bottom: 1px dotted #ddd;
+		}
+	}
+	.bottomleft,
+	.bottomright {
+		width: 100%;
+		text-align: center;
+		position: relative;
+		@media (min-width: $breakpoint-sm) {
+			width: auto;
+			text-align: left;
+			position: absolute;
+			bottom: 0px;
+		}
+		font-size: 0.7rem;
+		color: #ddd;
+	}
+	.bottomleft {
+		display: none;
+		@media (min-width: $breakpoint-sm) {
+			display: inline;
+		}
+		left: 0px;
+	}
+	.bottomright {
+		right: 0px;
+		bottom: 5px;
+	}
+}
+
+#code {
+	background-color: #151515;
+	color: #ccc;
+}
+
+.code {
+	&__copy {
+		@media (min-width: $breakpoint-sm) {
+			width: 35%;
+		}
+	}
+	&__snippet {
+		display: none;
+		@media (min-width: $breakpoint-sm) {
+			width: 65%;
+			display: inline;
+		}
+		font-size: 0.75rem;
+		color: #585858;
+	}
+}
+
+#design {
+	background-image: radial-gradient(#ddd 10%, transparent 10%);
+	background-size: 15px 15px;
+}
+
+.design {
+	&__copy {
+		order: 1;
+		@media (min-width: $breakpoint-sm) {
+			width: 35%;
+			order: 2;
+		}
+	}
+	&__gallery {
+		order: 2;
+		@media (min-width: $breakpoint-sm) {
+			width: 65%;
+			order: 1;
+		}
+	}
+}
+
+.marketing {
+	&__copy {
+		@media (min-width: $breakpoint-sm) {
+			width: 35%;
+		}
+	}
+	&__image {
+		@media (min-width: $breakpoint-sm) {
+			width: 65%;
+		}
+	}
+}

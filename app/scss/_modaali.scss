@@ -1,0 +1,61 @@
+/* MODAALI */
+
+.modaali {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 9;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: $spacing;
+	overflow-y: auto;
+
+	transition: background-color 0.25s cubic-bezier(0.5, 0, 0.5, 1);
+
+	&[aria-hidden=true] {
+		display: none;
+	}
+
+	&:before,
+	&:after {
+		content: '';
+	}
+
+	&--open {
+		background-color: rgba($color-bg, 0.2);
+	}
+
+	&--closed &__content {
+		opacity: 0;
+		transform: scale(0.96);
+	}
+
+	&__content {
+		padding: $spacing;
+		max-width: 50em;
+
+		background-color: $color-bg;
+		box-shadow: 0 $spacing $spacing * 3 rgba(#000, 0.2);
+		transition:
+			opacity 0.25s cubic-bezier(0.5, 0, 0.5, 1),
+			transform 0.25s cubic-bezier(0.4, 0, 0.4, 1.5);
+	}
+}
+
+// Prevent flashing when loading
+html:not(.no-js) .modaali:not(.modaali--open):not(.modaali--closed) {
+	display: none;
+}
+
+// no-js fallback (show it)
+html.no-js .modaali {
+	position: static;
+	overflow: visible;
+	padding: 0;
+}
+

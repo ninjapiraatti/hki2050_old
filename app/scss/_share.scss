@@ -1,0 +1,24 @@
+/* SHARE */
+
+.share-buttons {
+	& > li {
+		margin-bottom: $spacing / 4;
+	}
+}
+
+.share {
+
+	&__icon,
+	&__title {
+
+	}
+
+	&__icon {
+		margin-right: 0.1em;
+	}
+
+	&__title {
+		font-weight: 500;
+	}
+}
+

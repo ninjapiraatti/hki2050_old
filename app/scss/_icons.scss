@@ -1,0 +1,49 @@
+/* ICONS */
+
+.icon {
+	position: relative;
+	top: -1px;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-top: -0.5em;
+	margin-bottom: -0.5em;
+	font-size: inherit;
+	vertical-align: middle;
+
+	&--share {
+		font-size: $line-height * 1em;
+	}
+
+	use {
+		stroke: currentColor;
+		fill: currentColor;
+		pointer-events: none;
+	}
+}
+
+.bottomright {
+	.icon {
+		transition: color 0.3s ease-in-out;
+		width: 32px;
+		height: 32px;
+		margin-left: 16px;
+		color: #ddd;
+		use {
+			stroke: none;
+		}
+		&--mail:hover {
+			color: $color-link-hover;
+		}
+		&--whatsapp:hover {
+			color: #25d366;
+		}
+		&--github:hover {
+			color: #6e5494;
+		}
+		&--instagram:hover {
+			color: #e1306c;
+		}
+	}
+}
+

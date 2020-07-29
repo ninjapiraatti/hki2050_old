@@ -1,0 +1,22 @@
+/* PERSON */
+
+.person {
+	display: flex;
+	align-items: center;
+
+	&__avatar {
+		align-self: flex-start;
+		flex: 0 1 $line-height * 4em;
+		min-width: $line-height * 2em;
+		margin-right: $spacing / 2;
+	}
+
+	&__info {
+		flex: 1 0 30ch;
+	}
+
+	.grid--persons > & {
+		flex: 1 1 20em;
+	}
+}
+
