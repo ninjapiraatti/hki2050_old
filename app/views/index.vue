@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My first Vue app</title>
-</head>
-<body>
-  <div id="app">
-    {{ message }}
-  </div>
+<template>
+  <div class="example">{{ message }}</div>
+</template>
 
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
-  </script>
-</body>
-</html>
+<script>
+export default {
+  data () {
+    return {
+      message: 'Hello world!'
+    }
+  }
+}
+</script>
