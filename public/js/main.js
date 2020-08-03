@@ -9,7 +9,7 @@
   var script = {
     data () {
       return {
-        message: 'Hello world!'
+        message: "Henlo world!"
       }
     }
   };
