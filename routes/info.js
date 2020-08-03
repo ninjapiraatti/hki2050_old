@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET info. */
 router.get('/', function(req, res, next) {
-	res.send("Henlo info");
+	res.send("res.send message");
 	res.render('../app/views/info.vue', { title: 'HKI2050' });
 });
 

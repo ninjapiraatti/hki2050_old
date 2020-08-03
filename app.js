@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var infoRouter = require('./routes/info');
 var tasksRouter = require('./routes/tasks');
 const { dev } = require('./dbconfig.js');
+const employees = require("./models/simple");
 
 mongoose.set('useFindAndModify', false);
 mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
