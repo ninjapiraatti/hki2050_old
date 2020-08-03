@@ -1,14 +1,14 @@
-//import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import vue from 'rollup-plugin-vue';
 
 export default {
-  input: 'app/app.vue',
+  input: 'app/js/main.js',
   output: {
-    format: 'esm',
+    format: 'iife',
     file: 'public/js/main.js'
   },
   plugins: [
-	//nodeResolve(),
+	nodeResolve(),
 	vue()
   ]
 }

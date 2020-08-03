@@ -6,7 +6,7 @@ var result = sass.renderSync({
   file: '../app/scss/main.scss',
   data: 'body{background:blue; a{color:black;}}',
   outputStyle: 'compressed',
-  outFile: '../app/css/main.css',
+  outFile: '../public/css/main.css',
   sourceMap: true, // or an absolute or relative (to outFile) path
   importer: function(url, prev, done) {
     // url is the path in import as is, which LibSass encountered.
