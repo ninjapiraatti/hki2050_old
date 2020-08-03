@@ -2,10 +2,10 @@
 import vue from 'rollup-plugin-vue';
 
 export default {
-  input: 'app/views/index.vue',
+  input: 'app/app.vue',
   output: {
     format: 'esm',
-    file: 'public/mycomponent.js'
+    file: 'public/js/main.js'
   },
   plugins: [
 	//nodeResolve(),
