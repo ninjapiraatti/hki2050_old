@@ -6,11 +6,10 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 global.Task = require('./models/taskModel');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var infoRouter = require('./routes/info');
 var tasksRouter = require('./routes/tasks');
 const { dev } = require('./dbconfig.js');
 
-mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
 mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
     "user": dev.user,
@@ -35,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/info', infoRouter);
 app.use('/tasks', tasksRouter);
 
 // catch 404 and forward to error handler

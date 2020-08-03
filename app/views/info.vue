@@ -4,10 +4,10 @@
 
 <script>
 export default {
-	name: "App",
+	name: "Info",
 	data () {
 		return {
-			message: "Henlo world!"
+			message: "Henlo info!"
 		}
 	}
 }
