@@ -15171,33 +15171,88 @@
       undefined
     );
 
-  /*
-  new Vue({
-  	el: '#app',
-  	render(h) {return h(App)}
-  })
-  */
+  //
+  //
+  //
+  //
+  //
+
+  var script$2 = {
+  	name: "insert",
+  	data () {
+  		return {
+  			message: "Insert data!"
+  		}
+  	},
+  	methods: {
+  		consoleLog: function() {
+  			console.log("Moro");
+  		}
+  	}
+  };
+
+  /* script */
+  const __vue_script__$2 = script$2;
+
+  /* template */
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.consoleLog()}}},[_vm._v("Call function")])};
+  var __vue_staticRenderFns__$2 = [];
+
+    /* style */
+    const __vue_inject_styles__$2 = undefined;
+    /* scoped */
+    const __vue_scope_id__$2 = undefined;
+    /* module identifier */
+    const __vue_module_identifier__$2 = undefined;
+    /* functional template */
+    const __vue_is_functional_template__$2 = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+    /* style inject shadow dom */
+    
+
+    
+    const __vue_component__$2 = /*#__PURE__*/normalizeComponent(
+      { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+      __vue_inject_styles__$2,
+      __vue_script__$2,
+      __vue_scope_id__$2,
+      __vue_is_functional_template__$2,
+      __vue_module_identifier__$2,
+      false,
+      undefined,
+      undefined,
+      undefined
+    );
+
   Vue.use(VueRouter);
 
   const router = new VueRouter({
-    mode: 'history',
-    linkActiveClass: 'active',
-    routes: [
-      {
-        path: '/',
-        component: __vue_component__
-      },
-      {
-        path: '/info',
-        name: 'info',
-        component: __vue_component__$1
-      },
-      {
-        path: '*',
-        name: '404',
-        component: __vue_component__
-      }
-    ]
+  	mode: 'history',
+  	linkActiveClass: 'active',
+  	routes: [
+  		{
+  			path: '/',
+  			component: __vue_component__
+  		},
+  		{
+  			path: '/info',
+  			name: 'info',
+  			component: __vue_component__$1
+  		},
+  		{
+  			path: '/insert',
+  			name: 'insert',
+  			component: __vue_component__$2
+  		},
+  		{
+  			path: '*',
+  			name: '404',
+  			component: __vue_component__
+  		}
+  	]
   });
 
   new Vue({
