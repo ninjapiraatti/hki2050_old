@@ -15176,7 +15176,11 @@
   //
   //
   //
+  //
+  //
+  //
 
+  //const todoModel = require('../../models/todoschema.js');
   var script$2 = {
   	name: "insert",
   	data () {
@@ -15187,6 +15191,20 @@
   	methods: {
   		consoleLog: function() {
   			console.log("Moro");
+  		},
+  		insertData: async function() {
+  			let newTodo = new todoModel();
+  			newTodo.title = req.body.todo;
+  			newTodo.completed = false;
+  			newTodo.save(err => {
+  				if (err) {
+  				console.log(err);
+  				res.send("Error while adding Todo");
+  				} else {
+  				console.log(newTodo);
+  				res.send("Todo added");
+  				}
+  			});
   		}
   	}
   };
@@ -15195,7 +15213,7 @@
   const __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.consoleLog()}}},[_vm._v("Call function")])};
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.consoleLog()}}},[_vm._v("Call function")]),_vm._v(" "),_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.insertData()}}},[_vm._v("Insert data")])])};
   var __vue_staticRenderFns__$2 = [];
 
     /* style */

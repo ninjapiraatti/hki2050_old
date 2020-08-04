@@ -17,6 +17,7 @@
 	"dependencies": {
 		"@rollup/plugin-node-resolve": "^8.4.0",
 		"@vue/compiler-sfc": "^3.0.0-rc.5",
+		"axios": "^0.19.2",
 		"cookie-parser": "~1.4.4",
 		"debug": "~2.6.9",
 		"express": "~4.16.1",

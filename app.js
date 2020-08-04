@@ -9,7 +9,6 @@ var indexRouter = require('./routes/index');
 var infoRouter = require('./routes/info');
 const { dev } = require('./dbconfig.js');
 const employees = require("./models/simple");
-const todoModel = require('./models/todoschema');
 
 mongoose.set('useFindAndModify', false);
 mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
@@ -21,6 +20,9 @@ mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
 );
 
 const port = process.env.PORT || 3000;
+
+// import todo schema as model
+let todoModel = require("./models/todoschema");
 
 var app = express();
 

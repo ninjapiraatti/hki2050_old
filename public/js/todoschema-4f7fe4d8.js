@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = import('./index-84f799cc.js');
 
 const Schema = mongoose.Schema;
 

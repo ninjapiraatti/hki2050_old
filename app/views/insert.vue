@@ -7,6 +7,7 @@
   
 
 <script>
+//const todoModel = require('../../models/todoschema.js');
 export default {
 	name: "insert",
 	data () {
@@ -19,7 +20,18 @@ export default {
 			console.log("Moro");
 		},
 		insertData: async function() {
-			console.log("We're not actually writing data yet.");
+			let newTodo = new todoModel();
+			newTodo.title = req.body.todo;
+			newTodo.completed = false;
+			newTodo.save(err => {
+				if (err) {
+				console.log(err);
+				res.send("Error while adding Todo");
+				} else {
+				console.log(newTodo);
+				res.send("Todo added");
+				}
+			});
 		}
 	}
 }
