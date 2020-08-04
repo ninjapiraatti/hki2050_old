@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 global.Task = require('./models/taskModel');
 var indexRouter = require('./routes/index');
 var infoRouter = require('./routes/info');
-var tasksRouter = require('./routes/tasks');
 const { dev } = require('./dbconfig.js');
 const employees = require("./models/simple");
 
@@ -24,23 +23,13 @@ const port = process.env.PORT || 3000;
 
 var app = express();
 
-// view engine setup
-//app.set('views', path.join(__dirname, 'app/views'));
-//app.set('view engine', 'html');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/info', infoRouter);
-app.use('/tasks', tasksRouter);
-
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.sendFile(path.join (__dirname, './public', 'index.html'));
 });
 
 // error handler

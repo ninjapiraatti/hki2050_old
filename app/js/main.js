@@ -1,34 +1,33 @@
 import Vue from 'vue/dist/vue.esm.browser'
-import Router from 'vue-router'
+import Router from 'vue-router/dist/vue-router.esm.browser'
 import App from '../app.vue'
-import info from '../views/info.vue'
+import Notfound from '../app.vue'
+import Info from '../views/info.vue'
 
-/*
-new Vue({
-	el: '#app',
-	render(h) {return h(App)}
-})
-*/
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
   linkActiveClass: 'active',
   routes: [
     {
       path: '/',
-      redirect: '/info'
+      component: App
     },
     {
       path: '/info',
       name: 'info',
-      component: info
+      component: Info
+    },
+    {
+      path: '*',
+      name: '404',
+      component: Notfound
     }
   ]
 });
 
 new Vue({
-	router,
-	render: h => h(App),
+  router,
+  template: '<router-view></router-view>',
   }).$mount('#app')

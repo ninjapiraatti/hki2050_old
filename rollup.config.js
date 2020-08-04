@@ -8,7 +8,7 @@ export default {
     file: 'public/js/main.js'
   },
   plugins: [
-	nodeResolve(),
-	vue()
+    nodeResolve(),
+	  vue()
   ]
 }

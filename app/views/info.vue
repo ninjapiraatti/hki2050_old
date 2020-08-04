@@ -7,7 +7,7 @@ export default {
 	name: "info",
 	data () {
 		return {
-			message: "Henlo info!"
+			message: "IIInfo!"
 		}
 	}
 }
