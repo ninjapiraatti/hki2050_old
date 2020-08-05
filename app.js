@@ -11,14 +11,14 @@ var insertRouter = require('./routes/insert');
 const { dev } = require('./dbconfig.js');
 const employees = require("./models/simple");
 
-// mongoose.set('useFindAndModify', false);
-// mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
-//     "user": dev.user,
-// 	"pass": dev.password
-// }).then(
-// 	() => {console.log('Database connection is successful') },
-// 	err => { console.log('Error when connecting to the database'+ err)}
-// );
+mongoose.set('useFindAndModify', false);
+mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
+    "user": dev.user,
+	"pass": dev.password
+}).then(
+	() => {console.log('Database connection is successful') },
+	err => { console.log('Error when connecting to the database'+ err)}
+);
 
 // Routes
 var routes = require('./routes/routes');

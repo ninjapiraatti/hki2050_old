@@ -20,7 +20,7 @@ export default {
 			console.log("Moro");
 		},
 		insertData: async function() {
-			fetch('/api/insert').then(data => data.json())
+			fetch('/api/insert', {method: 'POST'}).then(data => data.json())
 			.then(da => console.log(da))
 		}
 	}
