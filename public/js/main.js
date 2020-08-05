@@ -15130,7 +15130,7 @@
   	name: "info",
   	data () {
   		return {
-  			message: "IIIIInfo!"
+  			message: "IIIInfo!"
   		}
   	}
   };
