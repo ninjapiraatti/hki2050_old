@@ -12,13 +12,13 @@
 @import 'footer';
 @import 'logo';
 @import 'section';
-@import 'listed';
+//@import 'listed';
 //@import 'share';
 //@import 'avatar';
-//@import 'dropdown';
+@import 'dropdown';
 @import 'expander';
 //@import 'modaali';
-@import 'lightbox';
+//@import 'lightbox';
 @import 'liukuri';
 @import 'icons';
 @import 'forms';
@@ -30,8 +30,8 @@
 //@import 'contact';
 //@import 'article';
 //@import 'person';
-@import 'event';
-@import 'gallery';
+//@import 'event';
+//@import 'gallery';
 
 // Helpers and other overrides
 @import 'helpers';
