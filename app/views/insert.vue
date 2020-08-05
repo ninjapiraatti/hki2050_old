@@ -7,7 +7,6 @@
   
 
 <script>
-//const todoModel = require('../../models/todoschema.js');
 export default {
 	name: "insert",
 	data () {

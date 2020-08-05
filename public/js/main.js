@@ -15130,7 +15130,7 @@
   	name: "info",
   	data () {
   		return {
-  			message: "IIIInfo!"
+  			message: "IIInfo!"
   		}
   	}
   };
@@ -15180,7 +15180,6 @@
   //
   //
 
-  //const todoModel = require('../../models/todoschema.js');
   var script$2 = {
   	name: "insert",
   	data () {
