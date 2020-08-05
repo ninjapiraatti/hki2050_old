@@ -15193,18 +15193,8 @@
   			console.log("Moro");
   		},
   		insertData: async function() {
-  			let newTodo = new todoModel();
-  			newTodo.title = req.body.todo;
-  			newTodo.completed = false;
-  			newTodo.save(err => {
-  				if (err) {
-  				console.log(err);
-  				res.send("Error while adding Todo");
-  				} else {
-  				console.log(newTodo);
-  				res.send("Todo added");
-  				}
-  			});
+  			fetch('/api/insert').then(data => data.json())
+  			.then(da => console.log(da));
   		}
   	}
   };

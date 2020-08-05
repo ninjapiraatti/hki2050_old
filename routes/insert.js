@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 const todoschema = require('../models/todoschema');
 
-router.get(['/', '/*'], function(req, res, next) {
+router.get(['/insertttt'], function(req, res, next) {
 	res.sendFile(path.join (__dirname, '../public', 'index.html'));
 });
 
