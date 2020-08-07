@@ -14,23 +14,16 @@ var data = [
 	{
 	  name: "John",
 	  age: 21,
-	  location: "New York"
-	},
-	{
-	  name: "Smith",
-	  age: 27,
-	  location: "Texas"
-	},
-	{
-	  name: "Lisa",
-	  age: 23,
-	  location: "Chicago"
+	  bio: "John is a good guy.",
+	  imege: "ImageURL",
+	  dem: 150,
+	  id: "79b82da"
 	}
   ];
 
 router.post("/insert", function(req, res) {
 	console.log('Yay, you pressed a button!');
-	employees.insertMany(data, function(err, result) {
+	characters.insertMany(data, function(err, result) {
 		if (err) {
 			console.log(err);
 			console.log('ERror');
