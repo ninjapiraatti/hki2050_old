@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-let employee = new Schema(
+let character = new Schema(
   {
     name: {
       type: String
@@ -21,6 +21,29 @@ let employee = new Schema(
     },
     id: {
       type: String
+    },
+    basestats: {
+      strength: {
+        type: Number
+      },
+      perception: {
+        type: Number
+      },
+      endurance: {
+        type: Number
+      },
+      charisma: {
+        type: Number
+      },
+      intelligence: {
+        type: Number
+      },
+      agility: {
+        type: Number
+      },
+      luck: {
+        type: Number
+      }
     }
   },
   { collection: "Characters" }

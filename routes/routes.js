@@ -1,7 +1,7 @@
 // Routes
 const express = require('express');
 const router = express.Router();
-const employees = require('../models/simple');
+const characters = require('../models/characters');
 
 // const index = require('./index');
 
@@ -15,9 +15,18 @@ var data = [
 	  name: "John",
 	  age: 21,
 	  bio: "John is a good guy.",
-	  imege: "ImageURL",
+	  image: "ImageURL",
 	  dem: 150,
-	  id: "79b82da"
+	  id: "79b82da",
+	  basestats: {
+		  strength: 5,
+		  perception: 5,
+		  endurance: 5,
+		  charisma: 5,
+		  intelligence: 5,
+		  agility: 5,
+		  luck: 5
+	  }
 	}
   ];
 
