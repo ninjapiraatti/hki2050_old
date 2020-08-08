@@ -46,7 +46,8 @@ router.post("/insert", function(req, res) {
 
 router.post("/login", function(req, res) {
 	console.log('Trying to log in');
-	console.log(req.body);
+	console.log(req);
+	//res.json(req.body);
 });
 
 module.exports = router;
