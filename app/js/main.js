@@ -25,6 +25,13 @@ const router = new Router({
 			name: 'insert',
 			component: Insert
 		},
+		/*
+		{
+			path: '/login',
+			name: 'login',
+			component: Login
+		},
+		*/
 		{
 			path: '*',
 			name: '404',

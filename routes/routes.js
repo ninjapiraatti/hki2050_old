@@ -44,4 +44,9 @@ router.post("/insert", function(req, res) {
 	  });
 });
 
+router.post("/login", function(req, res) {
+	console.log('Trying to log in');
+	console.log(req.body);
+});
+
 module.exports = router;

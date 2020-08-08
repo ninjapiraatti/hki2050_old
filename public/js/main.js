@@ -15000,13 +15000,39 @@
   //
   //
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
 
   var script = {
-  	name: "App",
-  	data () {
-  		return {
-  			message: "Henlo world!"
-  		}
+  	name: "Login",
+  	methods: {
+  		login: (e) => {    
+                  e.preventDefault();    
+                  let email = "user@email.com";   
+                  let password = "password";    
+                  let login = () => {    
+                      let data = {    
+                          email: email,    
+                          password: password    
+  					};
+  					fetch('/login', {method: 'POST', body: data})
+                          .then((response) => {    
+                              console.log("Logged in");    
+                          })    
+                          .catch((errors) => {    
+                              console.log("Cannot log in");    
+                          });    
+                  };    
+                  login();    
+              } 
   	}
   };
 
@@ -15089,7 +15115,7 @@
   const __vue_script__ = script;
 
   /* template */
-  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v(_vm._s(_vm.message))])};
+  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n"),_c('div',[_c('h2',[_vm._v("Login")]),_vm._v(" "),_c('form',{on:{"submit":_vm.login}},[_c('input',{attrs:{"type":"text","name":"email"}}),_c('br'),_vm._v(" "),_c('input',{attrs:{"type":"password","name":"password"}}),_c('br'),_vm._v(" "),_c('input',{attrs:{"type":"submit","value":"Login"}})])])])};
   var __vue_staticRenderFns__ = [];
 
     /* style */
@@ -15254,6 +15280,13 @@
   			name: 'insert',
   			component: __vue_component__$2
   		},
+  		/*
+  		{
+  			path: '/login',
+  			name: 'login',
+  			component: Login
+  		},
+  		*/
   		{
   			path: '*',
   			name: '404',
