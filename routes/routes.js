@@ -46,7 +46,7 @@ router.post("/insert", function(req, res) {
 
 router.post("/login", function(req, res) {
 	console.log('Trying to log in');
-	console.log(req);
+	console.log(req.body);
 	//res.json(req.body);
 });
 

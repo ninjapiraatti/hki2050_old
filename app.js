@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 const { dev } = require('./dbconfig.js');
-const employees = require("./models/simple");
+const bodyParser = require('body-parser');
 
 mongoose.set('useFindAndModify', false);
 mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
@@ -26,6 +26,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser);
 app.use('/api', routes);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {

@@ -13,6 +13,7 @@
 		"@rollup/plugin-commonjs": "^14.0.0",
 		"@rollup/plugin-json": "^4.1.0",
 		"autoprefixer": "^9.7.2",
+		"body-parser": "^1.19.0",
 		"chokidar": "^3.3.0",
 		"node-sass": "^4.13.0",
 		"nodemon": "^2.0.4",
