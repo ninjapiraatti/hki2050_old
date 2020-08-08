@@ -19,7 +19,7 @@ export default {
 		login: async function(e) {
 		//login: (e) => {    
 			e.preventDefault()    
-			let email = "user@email.com"   
+			let email = "user@email.com"   // We are not actually reading the form yet
 			let password = "password"    
 			let login = () => {    
 				let data = {    
