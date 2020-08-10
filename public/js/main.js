@@ -15038,7 +15038,7 @@
   					})    
   					.catch((errors) => {    
   						console.log("Vue got Error");
-  						this.$router.push('insert');
+  						this.$router.push('logout');
   					});    
   			};    
   			login();    
@@ -15161,40 +15161,24 @@
   //
   //
   //
+  //
+  //
+  //
 
-  var script$1 = {    
-      name: "Dashboard",    
-      data() {    
-          return {    
-              user: {    
-                  name: "User"    
-              }    
-          }    
-      },    
-      methods: {    
-          getUserData: function() {    
-              let self = this;    
-              fetch('api/user', {method: 'GET'})
-                  .then((response) => {    
-                      console.log(response.data.user);    
-                      self.$set(this, "user", response.data.user);    
-                  })    
-                  .catch((errors) => {    
-                      console.log(errors);    
-                      this.$router.push('/insert'); 
-                  });    
-          }    
-      },    
-      mounted() {    
-          this.getUserData();    
-      }    
+  var script$1 = {
+  	name: "Logout",
+  	data () {
+  		return {
+  			message: "Nope nope nope"
+  		}
+  	}
   };
 
   /* script */
   const __vue_script__$1 = script$1;
 
   /* template */
-  var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v(_vm._s(_vm.message))])};
+  var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n")])};
   var __vue_staticRenderFns__$1 = [];
 
     /* style */
@@ -15233,31 +15217,43 @@
   //
   //
   //
-  //
-
-  var script$2 = {
-  	name: "insert",
-  	data () {
-  		return {
-  			message: "Insert data!"
-  		}
-  	},
-  	methods: {
-  		consoleLog: function() {
-  			console.log("Moro");
-  		},
-  		insertData: async function() {
-  			fetch('/api/insert', {method: 'POST'}).then(data => data.json())
-  			.then(da => console.log(da));
-  		}
-  	}
-  };
+   
+      var script$2 = {    
+          name: "Dashboard",    
+          data() {    
+              return {    
+                  user: {    
+                      name: "User"    
+                  }    
+              }    
+          },    
+          methods: {    
+              getUserData: function() {
+  				console.log("api/user trying to do something.");
+                  let self = this;    
+  				fetch('api/user', {method: 'GET'})
+                      .then((response) => {    
+  						console.log("api/user got a response.");
+                          console.log(response.data.user);    
+                          self.$set(this, "user", response.data.user);    
+                      })    
+                      .catch((errors) => {    
+  						console.log("api/user got an error.");
+                          console.log(errors);    
+                          this.$router.push('/logout'); 
+                      });    
+              }    
+          },    
+          mounted() {    
+              this.getUserData();    
+          }    
+      };
 
   /* script */
   const __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.consoleLog()}}},[_vm._v("Call function")]),_vm._v(" "),_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.insertData()}}},[_vm._v("Insert data")])])};
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.name))])])};
   var __vue_staticRenderFns__$2 = [];
 
     /* style */
@@ -15289,6 +15285,69 @@
       undefined
     );
 
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$3 = {
+  	name: "insert",
+  	data () {
+  		return {
+  			message: "Insert data!"
+  		}
+  	},
+  	methods: {
+  		consoleLog: function() {
+  			console.log("Moro");
+  		},
+  		insertData: async function() {
+  			fetch('/api/insert', {method: 'POST'}).then(data => data.json())
+  			.then(da => console.log(da));
+  		}
+  	}
+  };
+
+  /* script */
+  const __vue_script__$3 = script$3;
+
+  /* template */
+  var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.consoleLog()}}},[_vm._v("Call function")]),_vm._v(" "),_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.insertData()}}},[_vm._v("Insert data")])])};
+  var __vue_staticRenderFns__$3 = [];
+
+    /* style */
+    const __vue_inject_styles__$3 = undefined;
+    /* scoped */
+    const __vue_scope_id__$3 = undefined;
+    /* module identifier */
+    const __vue_module_identifier__$3 = undefined;
+    /* functional template */
+    const __vue_is_functional_template__$3 = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+    /* style inject shadow dom */
+    
+
+    
+    const __vue_component__$3 = /*#__PURE__*/normalizeComponent(
+      { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
+      __vue_inject_styles__$3,
+      __vue_script__$3,
+      __vue_scope_id__$3,
+      __vue_is_functional_template__$3,
+      __vue_module_identifier__$3,
+      false,
+      undefined,
+      undefined,
+      undefined
+    );
+
   Vue.use(VueRouter);
 
   const router = new VueRouter({
@@ -15302,20 +15361,18 @@
   		{
   			path: '/dashboard',
   			name: 'dashboard',
-  			component: __vue_component__$1
+  			component: __vue_component__$2
   		},
   		{
   			path: '/insert',
   			name: 'insert',
-  			component: __vue_component__$2
+  			component: __vue_component__$3
   		},
-  		/*
   		{
-  			path: '/login',
-  			name: 'login',
-  			component: Login
+  			path: '/logout',
+  			name: 'logout',
+  			component: __vue_component__$1
   		},
-  		*/
   		{
   			path: '*',
   			name: '404',

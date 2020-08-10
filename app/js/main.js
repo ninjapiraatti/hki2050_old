@@ -2,6 +2,7 @@ import Vue from 'vue/dist/vue.esm.browser'
 import Router from 'vue-router/dist/vue-router.esm.browser'
 import App from '../app.vue'
 import Notfound from '../app.vue'
+import Logout from '../views/logout.vue'
 import Dashboard from '../views/dashboard.vue'
 import Insert from '../views/insert.vue'
 
@@ -25,13 +26,11 @@ const router = new Router({
 			name: 'insert',
 			component: Insert
 		},
-		/*
 		{
-			path: '/login',
-			name: 'login',
-			component: Login
+			path: '/logout',
+			name: 'logout',
+			component: Logout
 		},
-		*/
 		{
 			path: '*',
 			name: '404',

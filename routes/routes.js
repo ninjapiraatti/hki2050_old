@@ -1,19 +1,11 @@
 // Routes
 const express = require('express');
 const router = express.Router();
-var cookieSession = require('cookie-session');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy
 const characters = require('../models/characters');
 router.use(express.json());
-const authMiddleware = (req, res, next) => {
-	if (!req.isAuthenticated()) {
-		console.log("Not authorized!")
-		res.status(401).send('You are not authenticated')
-	} else {
-		return next()
-	}
-}
 //router.use(express.urlencoded({ extended: true }));
 
 // const index = require('./index');
@@ -87,16 +79,20 @@ router.post("/insert", function(req, res) {
 router.post("/login", function(req, res, next) {
 	console.log("Login?")
 	passport.authenticate("local", (err, user, info) => {
-		console.log(req.body.email);
-		console.log(req.body.passwords);
+		//console.log(req.body.email);
+		//console.log(req.body.passwords);
 		console.log(info);
 		if (err) {
 			return next(err);
 		}
 		if (user) {
+			console.log(user.email);
+			console.log(user.password);
 			return res.status(200).send([user, "Jippii", info]);
 		}
 		if (!user) {
+			console.log(user.email);
+			console.log(user.password);
 			return res.status(400).send([user, "Cannot log in", info]);
 		}
 		req.login(user, err => {
@@ -108,41 +104,48 @@ router.post("/login", function(req, res, next) {
 
 router.get("/logout", function(req, res) {
 	req.logout();
-  
 	console.log("logged out")
-  
 	return res.send();
 });
 
+const authMiddleware = (req, res, next) => {
+	if (!req.isAuthenticated()) {
+		console.log("Not authorized, says middleware")
+		res.status(401).send('You are not authenticated')
+	} else {
+		return next()
+	}
+}
+
 router.get("/user", authMiddleware, (req, res) => {
-	console.log("Checking the user")
+	console.log("Trying to find the user");
 	let user = users.find(user => {
 	  return user.id === req.session.passport.user
 	})
-  
 	console.log([user, req.session])
-  
 	res.send({ user: user })
 });
 
-passport.use(
-	new LocalStrategy(
-		{
+passport.use(new LocalStrategy({
 		usernameField: "email",
 		passwordField: "password"
 		},
-
 		(username, password, done) => {
-		let user = users.find((user) => {
-			return user.email === username && user.password === password
-		})
-
-		if (user) {
-				console.log("There is a user")
+			let user = users.find((user) => {
+				return user.email === username && user.password === password
+			})
+			// if (!user.verifyPassword(user.password)) {
+			// 	done(null, false, { message: 'User not verified!'}); 
+			// }
+			if (user) {
+			//if (user.verifyPassword(user.password)) {
+				console.log("There is a user");
+				console.log(user.email);
+				console.log(user.password);
 				done(null, user)
 			} else {
 				console.log("Well somethings fucked")
-				done(null, false, { message: 'Incorrect username or password'})
+				done(null, false, {message: 'Incorrect username or password'})
 			}
 		}
 	)
@@ -156,7 +159,6 @@ passport.deserializeUser((id, done) => {
 	let user = users.find((user) => {
 		return user.id === id
 	})
-
 	done(null, user)
 })
 

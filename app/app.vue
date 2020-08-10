@@ -40,7 +40,7 @@ export default {
 					})    
 					.catch((errors) => {    
 						console.log("Vue got Error");
-						this.$router.push('insert');
+						this.$router.push('logout');
 					})    
 			}    
 			login()    
