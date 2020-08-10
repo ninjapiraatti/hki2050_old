@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const characters = require('../models/characters');
+router.use(express.json());
+//router.use(express.urlencoded({ extended: true }));
 
 // const index = require('./index');
 
@@ -44,10 +46,17 @@ router.post("/insert", function(req, res) {
 	  });
 });
 
-router.post("/login", function(req, res) {
-	console.log('Trying to log in');
-	console.log(req.body);
-	//res.json(req.body);
+router.post("/login", function(req, res, next) {
+	if (req.body.email == "user@email.co") {
+		console.log('Got the right email:', req.body.email);
+		console.log('Logging in');
+		res.send("Yup");
+	} else {
+		console.log('Wrong email');
+		//throw new Error('wrong email');
+		//next(err);
+	}
+	//router.push("./info");
 });
 
 module.exports = router;

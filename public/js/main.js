@@ -15013,24 +15013,29 @@
 
   var script = {
   	name: "App",
+  	data() {
+  		return {
+  			postId: null
+  		};
+  	},
   	methods: {
   		login: async function(e) {
   		//login: (e) => {    
   			e.preventDefault();    
   			let email = "user@email.com";   // We are not actually reading the form yet
   			let password = "password";    
-  			let login = () => {    
+  			let login = () => {   
   				let data = {    
-  					email: email,    
-  					password: password    
+  					"email": email,    
+  					"password": password
   				};
-  				fetch('api/login', {method: 'POST', body: data})
+  				fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
   					.then((response) => {    
   						console.log("Logged in");
   						console.log(response);  
   					})    
-  					.catch((errors) => {    
-  						console.log("Cannot log in");    
+  					.catch((next) => {    
+  						console.log("Cannot log in");
   					});    
   			};    
   			login();    
@@ -15117,7 +15122,7 @@
   const __vue_script__ = script;
 
   /* template */
-  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n"),_c('div',[_c('h2',[_vm._v("Login")]),_vm._v(" "),_c('form',{on:{"submit":_vm.login}},[_c('input',{attrs:{"type":"text","name":"email"}}),_c('br'),_vm._v(" "),_c('input',{attrs:{"type":"password","name":"password"}}),_c('br'),_vm._v(" "),_c('input',{attrs:{"type":"submit","value":"Login"}})])])])};
+  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('div',[_c('h2',[_vm._v("Login")]),_vm._v(" "),_c('form',{on:{"submit":_vm.login}},[_c('input',{attrs:{"type":"text","name":"email"}}),_c('br'),_vm._v(" "),_c('input',{attrs:{"type":"password","name":"password"}}),_c('br'),_vm._v(" "),_c('input',{attrs:{"type":"submit","value":"Login"}})])])])};
   var __vue_staticRenderFns__ = [];
 
     /* style */
