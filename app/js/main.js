@@ -2,7 +2,7 @@ import Vue from 'vue/dist/vue.esm.browser'
 import Router from 'vue-router/dist/vue-router.esm.browser'
 import App from '../app.vue'
 import Notfound from '../app.vue'
-import Info from '../views/info.vue'
+import Dashboard from '../views/dashboard.vue'
 import Insert from '../views/insert.vue'
 
 Vue.use(Router);
@@ -16,9 +16,9 @@ const router = new Router({
 			component: App
 		},
 		{
-			path: '/info',
-			name: 'info',
-			component: Info
+			path: '/dashboard',
+			name: 'dashboard',
+			component: Dashboard
 		},
 		{
 			path: '/insert',

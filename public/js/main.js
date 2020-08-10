@@ -15022,20 +15022,23 @@
   		login: async function(e) {
   		//login: (e) => {    
   			e.preventDefault();    
-  			let email = "user@email.com";   // We are not actually reading the form yet
-  			let password = "password";    
+  			let email = e.target.elements.email.value;
+  			let password = e.target.elements.password.value; 
   			let login = () => {   
   				let data = {    
   					"email": email,    
   					"password": password
   				};
+  				//fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
   				fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
   					.then((response) => {    
-  						console.log("Logged in");
-  						console.log(response);  
+  						console.log("Vue got Response");
+  						console.log(response.data);
+  						this.$router.push('dashboard');
   					})    
-  					.catch((next) => {    
-  						console.log("Cannot log in");
+  					.catch((errors) => {    
+  						console.log("Vue got Error");
+  						this.$router.push('insert');
   					});    
   			};    
   			login();    
@@ -15159,13 +15162,32 @@
   //
   //
 
-  var script$1 = {
-  	name: "info",
-  	data () {
-  		return {
-  			message: "IIInfo!"
-  		}
-  	}
+  var script$1 = {    
+      name: "Dashboard",    
+      data() {    
+          return {    
+              user: {    
+                  name: "User"    
+              }    
+          }    
+      },    
+      methods: {    
+          getUserData: function() {    
+              let self = this;    
+              fetch('api/user', {method: 'GET'})
+                  .then((response) => {    
+                      console.log(response.data.user);    
+                      self.$set(this, "user", response.data.user);    
+                  })    
+                  .catch((errors) => {    
+                      console.log(errors);    
+                      this.$router.push('/insert'); 
+                  });    
+          }    
+      },    
+      mounted() {    
+          this.getUserData();    
+      }    
   };
 
   /* script */
@@ -15278,8 +15300,8 @@
   			component: __vue_component__
   		},
   		{
-  			path: '/info',
-  			name: 'info',
+  			path: '/dashboard',
+  			name: 'dashboard',
   			component: __vue_component__$1
   		},
   		{

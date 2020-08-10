@@ -24,20 +24,23 @@ export default {
 		login: async function(e) {
 		//login: (e) => {    
 			e.preventDefault()    
-			let email = "user@email.com"   // We are not actually reading the form yet
-			let password = "password"    
+			let email = e.target.elements.email.value
+			let password = e.target.elements.password.value 
 			let login = () => {   
 				let data = {    
 					"email": email,    
 					"password": password
 				}
+				//fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
 				fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
 					.then((response) => {    
-						console.log("Logged in");
-						console.log(response);  
+						console.log("Vue got Response");
+						console.log(response.data);
+						this.$router.push('dashboard');
 					})    
 					.catch((errors) => {    
-						console.log("Cannot log in")
+						console.log("Vue got Error");
+						this.$router.push('insert');
 					})    
 			}    
 			login()    
