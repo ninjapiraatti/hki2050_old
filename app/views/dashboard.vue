@@ -21,22 +21,24 @@
 				console.log("dashboard.vue fired.");
                 let self = this    
 				fetch('api/user', {method: 'GET'})
-				.then((response) => {   
-					if (response.status != 200)
-					throw new Error ("No good");
+				.then((response) => response.json())
+				.then(response => { 
+					//if (response.status != 200)
+					//throw new Error ("No good");
 					console.log("dashboard.vue got response from api/user.");
-					console.log("Response from user/api:" + response.user)    
-					self.$set(this, "user", response.user)
+					console.log(response)    
+					//self.$set(this, "user", response)
+
 				})    
 				.catch((errors) => {    
 					console.log("dashboard.vue got error from api/user.");
 					console.log("Error from user/api:" + errors)    
 					this.$router.push('/logout'); 
 				})    
-            }    
-        },    
-        mounted() {    
-            this.getUserData()    
-        }
+			}
+		}, 
+		mounted() {    
+			this.getUserData()    
+		}
     }
 </script>

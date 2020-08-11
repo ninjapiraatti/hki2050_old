@@ -6,16 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const characters = require('../models/characters');
 router.use(express.json());
-//router.use(express.urlencoded({ extended: true }));
 
-// const index = require('./index');
-
-// // index.js
-// router.get('/', function(req, res, next) {
-// 	search.get(req, res, next);
-// });
-
-// Init cookies
 router.use(cookieSession({
     name: 'mysession',
     keys: ['vueauthrandomkey'],
@@ -76,40 +67,13 @@ router.post("/insert", function(req, res) {
 	  });
 });
 
-/*
-router.post("/login", function(req, res, next) {
-	console.log("\nLogging in..")
-	passport.authenticate("local", (err, user, info) => {
-		//console.log(req.body.email);
-		//console.log(req.body.passwords);
-		console.log("Login info:" + user.isAuthenticated);
-		if (err) {
-			return next(err);
-		}
-		if (user) {
-			console.log("Login found a user by email: " + user.email);
-			console.log("Login found users password: " + user.password);
-			return res.status(200).send([user, "Jippii", info]);
-		}
-		if (!user) {
-			console.log("No user. This should be undefined: " + user.email);
-			console.log("No user. This should be undefined: " + user.password);
-			return res.status(400).send([user, "Cannot log in", info]);
-		}
-		req.login(user, err => {
-			res.send("Logged in");
-		});
-	})(req, res, next);
-});
-*/
-
 router.post('/login',
 	passport.authenticate('local'),
 	function(req, res) {
-	// If this function gets called, authentication was successful.
-	// `req.user` contains the authenticated user.
-	console.log("Login found a user by email: " + req.user.email);
-	return res.send([req.user, "Jippii"]);
+	console.log("Login found a user by email: " + req.user);
+	console.log(req.user);
+	//return res.send(req.user);
+	res.json(req.user);
 });
 
 
@@ -125,7 +89,7 @@ const authMiddleware = function(req, res, next) {
 		res.status(401).send('You are not authenticated')
 		return;
 	} else {
-		console.log("Middleware req data: " + req.user);
+		console.log("Middleware req data (name): " + req.user.name);
 		return next()
 	}
 }
@@ -136,7 +100,9 @@ router.get("/user", authMiddleware, function(req, res) {
 	  return user.id === req.session.passport.user
 	})
 	console.log(user)
-	res.status(200).send("Jippii")
+	//res.send("Jippii")
+	//return res.send([req.session.passport.user, "Jippii"]);
+	res.json(req.session);
 });
 
 passport.use(new LocalStrategy({
@@ -147,11 +113,7 @@ passport.use(new LocalStrategy({
 			let user = users.find((user) => {
 				return user.email === username && user.password === password
 			})
-			// if (!user.verifyPassword(user.password)) {
-			// 	done(null, false, { message: 'User not verified!'}); 
-			// }
 			if (user) {
-			//if (user.verifyPassword(user.password)) {
 				console.log("There is a user");
 				console.log("Passport Localstrategy email: " + user.email);
 				console.log("Passport Localstrategy password: " + user.password);
@@ -176,21 +138,5 @@ passport.deserializeUser((id, done) => {
 	})
 	done(null, user)
 })
-
-/*
-router.post("/login", function(req, res, next) {
-	if (req.body.email == "u@u") {
-		console.log('Got the right email:', req.body.email);
-		console.log('Logging in');
-		res.send("Yup");
-		//router.push('insert');
-	} else {
-		console.log('Wrong email');
-		//throw new Error('wrong email');
-		//next(err);
-	}
-	//router.push("./insert");
-});
-*/
 
 module.exports = router;

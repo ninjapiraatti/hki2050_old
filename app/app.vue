@@ -33,14 +33,16 @@ export default {
 				}
 				//fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
 				fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
+					.then((response) => response.json())
 					.then((response) => {    
 						console.log("Vue got Response");
-						console.log("Response data: " + response.user);
+						//console.log("Response data: " + response);
+						console.log(response);
 						this.$router.push('dashboard');
 					})    
 					.catch((errors) => {    
 						console.log("Vue got Error");
-						console.log("Error data: " + response.user);
+						console.log("Error data: " + response);
 						this.$router.push('logout');
 					})    
 			}    
