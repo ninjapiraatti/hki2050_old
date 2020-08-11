@@ -6,6 +6,9 @@ var mongoose = require('mongoose');
 
 const { dev } = require('./dbconfig.js');
 
+// Mongoose. From docs: 'useFindAndModify': true by default.
+// Set to false to make findOneAndUpdate() and findOneAndRemove() 
+// use native findOneAndUpdate() rather than findAndModify().
 mongoose.set('useFindAndModify', false);
 mongoose.connect("mongodb+srv://hki2050.0nva9.mongodb.net/hki2050", {
     "user": dev.user,
@@ -23,7 +26,6 @@ var routes = require('./routes/routes');
 var app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/api', routes);
