@@ -15033,11 +15033,12 @@
   				fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
   					.then((response) => {    
   						console.log("Vue got Response");
-  						console.log(response.data);
+  						console.log("Response data: " + response.user);
   						this.$router.push('dashboard');
   					})    
   					.catch((errors) => {    
   						console.log("Vue got Error");
+  						console.log("Error data: " + response.user);
   						this.$router.push('logout');
   					});    
   			};    
@@ -15164,6 +15165,7 @@
   //
   //
   //
+  //
 
   var script$1 = {
   	name: "Logout",
@@ -15178,7 +15180,7 @@
   const __vue_script__$1 = script$1;
 
   /* template */
-  var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n")])};
+  var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"example"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")])])};
   var __vue_staticRenderFns__$1 = [];
 
     /* style */
@@ -15217,43 +15219,44 @@
   //
   //
   //
+  //
    
       var script$2 = {    
           name: "Dashboard",    
           data() {    
-              return {    
+              return {
                   user: {    
                       name: "User"    
                   }    
               }    
-          },    
+          },   
           methods: {    
               getUserData: function() {
-  				console.log("api/user trying to do something.");
+  				console.log("dashboard.vue fired.");
                   let self = this;    
   				fetch('api/user', {method: 'GET'})
-                      .then((response) => {    
-  						console.log("api/user got a response.");
-                          console.log(response.data.user);    
-                          self.$set(this, "user", response.data.user);    
-                      })    
-                      .catch((errors) => {    
-  						console.log("api/user got an error.");
-                          console.log(errors);    
-                          this.$router.push('/logout'); 
-                      });    
+  				.then((response) => {    
+  					console.log("dashboard.vue got response from api/user.");
+  					console.log("Response from user/api:" + response.data.user);    
+  					self.$set(this, "user", response.data.user);    
+  				})    
+  				.catch((errors) => {    
+  					console.log("dashboard.vue got error from api/user.");
+  					console.log("Error from user/api:" + errors);    
+  					this.$router.push('/logout'); 
+  				});    
               }    
           },    
           mounted() {    
               this.getUserData();    
-          }    
+          }
       };
 
   /* script */
   const __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.name))])])};
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.name))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")])])};
   var __vue_staticRenderFns__$2 = [];
 
     /* style */

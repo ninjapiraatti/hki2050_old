@@ -35,11 +35,12 @@ export default {
 				fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
 					.then((response) => {    
 						console.log("Vue got Response");
-						console.log(response.data);
+						console.log("Response data: " + response.user);
 						this.$router.push('dashboard');
 					})    
 					.catch((errors) => {    
 						console.log("Vue got Error");
+						console.log("Error data: " + response.user);
 						this.$router.push('logout');
 					})    
 			}    

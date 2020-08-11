@@ -1,7 +1,8 @@
 <template>
 	<div>    
 		<h2>Dashboard</h2>    
-		<p>Name: {{ user.name }}</p>    
+		<p>Name: {{ user.name }}</p>
+		<a href="api/logout">logout</a>    
     </div>
 </template>
 
@@ -14,26 +15,26 @@
                     name: "User"    
                 }    
             }    
-        },    
+        },   
         methods: {    
             getUserData: function() {
-				console.log("api/user trying to do something.");
+				console.log("dashboard.vue fired.");
                 let self = this    
 				fetch('api/user', {method: 'GET'})
-                    .then((response) => {    
-						console.log("api/user got a response.");
-                        console.log(response.data.user)    
-                        self.$set(this, "user", response.data.user)    
-                    })    
-                    .catch((errors) => {    
-						console.log("api/user got an error.");
-                        console.log(errors)    
-                        this.$router.push('/logout'); 
-                    })    
+				.then((response) => {    
+					console.log("dashboard.vue got response from api/user.");
+					console.log("Response from user/api:" + response.data.user)    
+					self.$set(this, "user", response.data.user)    
+				})    
+				.catch((errors) => {    
+					console.log("dashboard.vue got error from api/user.");
+					console.log("Error from user/api:" + errors)    
+					this.$router.push('/logout'); 
+				})    
             }    
         },    
         mounted() {    
             this.getUserData()    
-        }    
+        }
     }
 </script>

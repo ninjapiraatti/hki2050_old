@@ -76,29 +76,40 @@ router.post("/insert", function(req, res) {
 	  });
 });
 
+/*
 router.post("/login", function(req, res, next) {
-	console.log("Login?")
+	console.log("\nLogging in..")
 	passport.authenticate("local", (err, user, info) => {
 		//console.log(req.body.email);
 		//console.log(req.body.passwords);
-		console.log(info);
+		console.log("Login info:" + user.isAuthenticated);
 		if (err) {
 			return next(err);
 		}
 		if (user) {
-			console.log(user.email);
-			console.log(user.password);
+			console.log("Login found a user by email: " + user.email);
+			console.log("Login found users password: " + user.password);
 			return res.status(200).send([user, "Jippii", info]);
 		}
 		if (!user) {
-			console.log(user.email);
-			console.log(user.password);
+			console.log("No user. This should be undefined: " + user.email);
+			console.log("No user. This should be undefined: " + user.password);
 			return res.status(400).send([user, "Cannot log in", info]);
 		}
 		req.login(user, err => {
 			res.send("Logged in");
 		});
 	})(req, res, next);
+});
+*/
+
+router.post('/login',
+	passport.authenticate('local'),
+	function(req, res) {
+	// If this function gets called, authentication was successful.
+	// `req.user` contains the authenticated user.
+	console.log("Login found a user by email: " + req.user.email);
+	return res.status(200).send([req.user, "Jippii", info]);
 });
 
 
@@ -108,21 +119,22 @@ router.get("/logout", function(req, res) {
 	return res.send();
 });
 
-const authMiddleware = (req, res, next) => {
+const authMiddleware = function(req, res, next) {
+	console.log("Middleware req data: " + req.user);
 	if (!req.isAuthenticated()) {
-		console.log("Not authorized, says middleware")
+		console.log("Not authorized, says middleware.\n")
 		res.status(401).send('You are not authenticated')
 	} else {
 		return next()
 	}
 }
 
-router.get("/user", authMiddleware, (req, res) => {
+router.get("/user", authMiddleware, function(req, res) {
 	console.log("Trying to find the user");
 	let user = users.find(user => {
 	  return user.id === req.session.passport.user
 	})
-	console.log([user, req.session])
+	console.log(user)
 	res.send({ user: user })
 });
 
@@ -140,8 +152,8 @@ passport.use(new LocalStrategy({
 			if (user) {
 			//if (user.verifyPassword(user.password)) {
 				console.log("There is a user");
-				console.log(user.email);
-				console.log(user.password);
+				console.log("Passport Localstrategy email: " + user.email);
+				console.log("Passport Localstrategy password: " + user.password);
 				done(null, user)
 			} else {
 				console.log("Well somethings fucked")
@@ -152,10 +164,12 @@ passport.use(new LocalStrategy({
 )
 
 passport.serializeUser((user, done) => {
+	console.log("serializeUser fired.");
 	done(null, user.id)
 })
 
 passport.deserializeUser((id, done) => {
+	console.log("serializeUser fired.");
 	let user = users.find((user) => {
 		return user.id === id
 	})

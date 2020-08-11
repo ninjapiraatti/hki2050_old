@@ -1,6 +1,7 @@
 <template>
 	<div class="example">
 		{{ message }}
+		<a href="api/logout">logout</a>    
 	</div>
 </template>
   
