@@ -109,7 +109,7 @@ router.post('/login',
 	// If this function gets called, authentication was successful.
 	// `req.user` contains the authenticated user.
 	console.log("Login found a user by email: " + req.user.email);
-	return res.status(200).send([req.user, "Jippii", info]);
+	return res.send([req.user, "Jippii"]);
 });
 
 
@@ -120,11 +120,12 @@ router.get("/logout", function(req, res) {
 });
 
 const authMiddleware = function(req, res, next) {
-	console.log("Middleware req data: " + req.user);
 	if (!req.isAuthenticated()) {
 		console.log("Not authorized, says middleware.\n")
 		res.status(401).send('You are not authenticated')
+		return;
 	} else {
+		console.log("Middleware req data: " + req.user);
 		return next()
 	}
 }
@@ -135,7 +136,7 @@ router.get("/user", authMiddleware, function(req, res) {
 	  return user.id === req.session.passport.user
 	})
 	console.log(user)
-	res.send({ user: user })
+	res.status(200).send("Jippii")
 });
 
 passport.use(new LocalStrategy({

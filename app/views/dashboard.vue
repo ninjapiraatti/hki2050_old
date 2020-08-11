@@ -21,10 +21,12 @@
 				console.log("dashboard.vue fired.");
                 let self = this    
 				fetch('api/user', {method: 'GET'})
-				.then((response) => {    
+				.then((response) => {   
+					if (response.status != 200)
+					throw new Error ("No good");
 					console.log("dashboard.vue got response from api/user.");
-					console.log("Response from user/api:" + response.data.user)    
-					self.$set(this, "user", response.data.user)    
+					console.log("Response from user/api:" + response.user)    
+					self.$set(this, "user", response.user)
 				})    
 				.catch((errors) => {    
 					console.log("dashboard.vue got error from api/user.");
