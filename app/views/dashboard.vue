@@ -25,10 +25,10 @@
 				.then(response => { 
 					//if (response.status != 200)
 					//throw new Error ("No good");
+					console.log(JSON.parse(localStorage.getItem('user')));
 					console.log("dashboard.vue got response from api/user.");
-					console.log(response)    
-					//self.$set(this, "user", response)
-
+					self.$set(this, "user", JSON.parse(localStorage.getItem('user')));
+					//self.$set(this, "user", JSON.parse(localStorage.getItem('user')));
 				})    
 				.catch((errors) => {    
 					console.log("dashboard.vue got error from api/user.");

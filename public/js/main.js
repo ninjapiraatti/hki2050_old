@@ -15036,6 +15036,7 @@
   						console.log("Vue got Response");
   						//console.log("Response data: " + response);
   						console.log(response);
+  						localStorage.setItem('user', JSON.stringify(response));
   						this.$router.push('dashboard');
   					})    
   					.catch((errors) => {    
@@ -15235,15 +15236,16 @@
           methods: {    
               getUserData: function() {
   				console.log("dashboard.vue fired.");
+                  let self = this;    
   				fetch('api/user', {method: 'GET'})
   				.then((response) => response.json())
   				.then(response => { 
   					//if (response.status != 200)
   					//throw new Error ("No good");
+  					console.log(JSON.parse(localStorage.getItem('user')));
   					console.log("dashboard.vue got response from api/user.");
-  					console.log(response);    
-  					//self.$set(this, "user", response)
-
+  					self.$set(this, "user", JSON.parse(localStorage.getItem('user')));
+  					//self.$set(this, "user", JSON.parse(localStorage.getItem('user')));
   				})    
   				.catch((errors) => {    
   					console.log("dashboard.vue got error from api/user.");

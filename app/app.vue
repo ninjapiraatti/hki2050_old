@@ -38,6 +38,7 @@ export default {
 						console.log("Vue got Response");
 						//console.log("Response data: " + response);
 						console.log(response);
+						localStorage.setItem('user', JSON.stringify(response));
 						this.$router.push('dashboard');
 					})    
 					.catch((errors) => {    
