@@ -58,9 +58,8 @@ let users = [
 
 // Register route
 router.post("/register", function(req, res) {
-	console.log(req)
-	/*
-	characters.insertMany(req, function(err, result) {
+	console.log(req.body)
+	characters.insertMany(req.body, function(err, result) {
 		if (err) {
 			console.log(err);
 			console.log('ERror');
@@ -70,7 +69,6 @@ router.post("/register", function(req, res) {
 			res.json(result);
 		}
 	  });
-	*/
 });
 
 // Login route

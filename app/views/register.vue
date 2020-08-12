@@ -16,28 +16,8 @@ export default {
   },
   methods: {
     createOrUpdate: async function(character) {
-    	//const res = await api.createtask(task);
-		//this.$router.push(`/tasks/${res._id}`);
-		fetch('/api/register', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(components.characterform)})
+		fetch('/api/register', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(character)})
     }
   }
 };
-/*
-export default {
-	name: "Register",
-	data () {
-		return {
-			message: "Insert data!"
-		}
-	},
-	methods: {
-		consoleLog: function() {
-			console.log("Moro");
-		},
-		insertData: async function() {
-			fetch('/api/insert', {method: 'POST'}).then(data => data.json())
-			.then(da => console.log(da))
-		}
-	}
-}*/
 </script>
