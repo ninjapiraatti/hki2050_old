@@ -30,8 +30,8 @@ Component specific section modifications should be in the component's .scss file
 	// Prevent side scrolling
 	overflow: hidden;
 
-	.site-content > &:first-child {
-		margin-top: $navbar-height;
+	.site-content > &:last-child {
+		//margin-bottom: $navbar-height;
 	}
 
 	&--invert {

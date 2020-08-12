@@ -444,9 +444,12 @@ body {
 /* NAV */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  width: 100%;
+  height: 3rem;
+  background: linear-gradient(0deg, #191919 0%, #0c0c0c 100%); }
 
 .nav {
   display: flex;
@@ -506,17 +509,11 @@ body {
   .nav--main .nav-link:active {
     color: #dd004d; }
 
-.nav--desktop {
-  flex-direction: row;
-  margin-left: -0.5em;
-  margin-right: -0.5em; }
-  .nav--desktop .nav-link {
+.nav--mobile {
+  flex-direction: row; }
+  .nav--mobile .nav-link {
     padding-left: 0.6em;
     padding-right: 0.6em; }
-    .nav--desktop .nav-link:first-child {
-      flex-grow: 1; }
-      .nav--desktop .nav-link:first-child:nth-last-child(3) {
-        padding-right: 0; }
 
 html:not(.no-js) #main-nav:not(.nav--desktop):not(.nav--mobile) {
   display: none; }
@@ -607,8 +604,6 @@ Component specific section modifications should be in the component's .scss file
     .section {
       padding-top: 4.5rem;
       padding-bottom: 4.5rem; } }
-  .site-content > .section:first-child {
-    margin-top: 3rem; }
   .section--invert {
     color: #f6f6f6;
     background-color: #111; }
@@ -783,7 +778,8 @@ select,
 .button {
   background-clip: padding-box;
   border: solid 1px rgba(0, 0, 0, 0.2);
-  outline: 0; }
+  outline: 0;
+  font-family: "Overpass Mono", monospace; }
   input:focus,
   textarea:focus,
   select:focus,

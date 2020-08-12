@@ -2,9 +2,12 @@
 
 .navbar {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	width: 100%;
+	height: $navbar-height;
+	background: linear-gradient(0deg, rgba(25,25,25,1) 0%, rgba(12,12,12,1) 100%);
 }
 
 .nav {
@@ -96,28 +99,10 @@
 }
 
 .nav--mobile {
-	.nav-link {
-
-	}
-}
-
-.nav--desktop {
 	flex-direction: row;
-	margin-left: -0.5em;
-	margin-right: -0.5em;
-
 	.nav-link {
 		padding-left: 0.6em;
 		padding-right: 0.6em;
-
-		&:first-child {
-			flex-grow: 1; // TODO: Separate dropdown specific stuff to .dropdown
-
-			// Separate subnav trigger
-			&:nth-last-child(3) {
-				padding-right: 0;
-			}
-		}
 	}
 }
 

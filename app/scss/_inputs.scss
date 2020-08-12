@@ -8,6 +8,7 @@ select,
 	background-clip: padding-box;
 	border: solid 1px $color-border;
 	outline: 0;
+	font-family: $font-mono;
 	&:focus {
 		position: relative;
 		z-index: 1;
