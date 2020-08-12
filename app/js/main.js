@@ -4,7 +4,7 @@ import App from '../app.vue'
 import Notfound from '../app.vue'
 import Logout from '../views/logout.vue'
 import Dashboard from '../views/dashboard.vue'
-import Insert from '../views/insert.vue'
+import Register from '../views/register.vue'
 
 Vue.use(Router);
 
@@ -22,9 +22,9 @@ const router = new Router({
 			component: Dashboard
 		},
 		{
-			path: '/insert',
-			name: 'insert',
-			component: Insert
+			path: '/register',
+			name: 'register',
+			component: Register
 		},
 		{
 			path: '/logout',

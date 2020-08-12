@@ -15263,7 +15263,7 @@
   const __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.name))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")])])};
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert"},[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.name))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")])])};
   var __vue_staticRenderFns__$2 = [];
 
     /* style */
@@ -15303,9 +15303,27 @@
   //
   //
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
 
   var script$3 = {
-  	name: "insert",
+  	name: "Register",
   	data () {
   		return {
   			message: "Insert data!"
@@ -15326,8 +15344,8 @@
   const __vue_script__$3 = script$3;
 
   /* template */
-  var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.consoleLog()}}},[_vm._v("Call function")]),_vm._v(" "),_c('a',{staticClass:"link",attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.insertData()}}},[_vm._v("Insert data")])])};
-  var __vue_staticRenderFns__$3 = [];
+  var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert section--login"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('h2',[_vm._v("Register")]),_vm._v(" "),_c('p',{staticClass:"small small--dimmed"},[_vm._v("Citizen ranking initiative is powered by Anni Corp. Anni Corp does not accept any liability directly or indirectly caused by its action or inaction.")]),_vm._v(" "),_vm._m(0)])};
+  var __vue_staticRenderFns__$3 = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',[_c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"text","placeholder":"Your Name","name":"name"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"text","placeholder":"adamjensen@tor.com","name":"email"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"password","placeholder":"password","name":"password"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"password","placeholder":"password again","name":"password_verify"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('textarea',{attrs:{"placeholder":"Bio","name":"bio"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Strength","name":"strength"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Perception","name":"perception"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Endurance","name":"endurance"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Charisma","name":"charisma"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Intelligence","name":"intelligence"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Agility","name":"agility"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Luck","name":"luck"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Login"}})])])])}];
 
     /* style */
     const __vue_inject_styles__$3 = undefined;
@@ -15374,8 +15392,8 @@
   			component: __vue_component__$2
   		},
   		{
-  			path: '/insert',
-  			name: 'insert',
+  			path: '/register',
+  			name: 'register',
   			component: __vue_component__$3
   		},
   		{

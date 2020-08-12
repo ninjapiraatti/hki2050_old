@@ -1,5 +1,5 @@
 <template>
-	<div>    
+	<div class="section section--invert">    
 		<h2>Dashboard</h2>    
 		<p>Name: {{ user.name }}</p>
 		<a href="api/logout">logout</a>    

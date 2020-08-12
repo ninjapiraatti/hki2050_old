@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-let character = new Schema(
+let characterSchema = new Schema(
   {
     name: {
       type: String
@@ -49,4 +49,4 @@ let character = new Schema(
   { collection: "Characters" }
 );
 
-module.exports = mongoose.model("characters", character);
+module.exports = mongoose.model("character", characterSchema);

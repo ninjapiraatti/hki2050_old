@@ -17,9 +17,11 @@ body {
 }
 
 .small {
-	$font-size: 0.8rem;
+	$font-size: 0.6rem;
 	font-size: $font-size;
-	line-height: baseline($font-size);
+	&--dimmed {
+		color: #777;
+	}
 }
 
 a,

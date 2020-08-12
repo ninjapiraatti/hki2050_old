@@ -7,6 +7,7 @@ const LocalStrategy = require('passport-local').Strategy
 const characters = require('../models/characters');
 router.use(express.json());
 
+// Set cookie
 router.use(cookieSession({
     name: 'mysession',
     keys: ['vueauthrandomkey'],
@@ -36,8 +37,8 @@ var data = [
 	  }
 	}
   ];
-// Dummy users
 
+// Dummy users
 let users = [
 	{
 		id: 1,
@@ -53,7 +54,8 @@ let users = [
 	}
 ]
 
-router.post("/insert", function(req, res) {
+// Register route
+router.post("/register", function(req, res) {
 	console.log('Yay, you pressed a button!');
 	characters.insertMany(data, function(err, result) {
 		if (err) {
@@ -67,6 +69,7 @@ router.post("/insert", function(req, res) {
 	  });
 });
 
+// Login route
 router.post('/login',
 	passport.authenticate('local'),
 	function(req, res) {
@@ -76,13 +79,14 @@ router.post('/login',
 	res.json(req.user);
 });
 
-
+// Logout route
 router.get("/logout", function(req, res) {
 	req.logout();
 	console.log("logged out")
 	return res.send();
 });
 
+// Middleware to check if passport.js has user authenticated
 const authMiddleware = function(req, res, next) {
 	if (!req.isAuthenticated()) {
 		console.log("Not authorized, says middleware.\n")
@@ -94,6 +98,7 @@ const authMiddleware = function(req, res, next) {
 	}
 }
 
+// User is called when you want to get some data from them
 router.get("/user", authMiddleware, function(req, res) {
 	console.log("Trying to find the user");
 	let user = users.find(user => {
@@ -105,6 +110,7 @@ router.get("/user", authMiddleware, function(req, res) {
 	res.json(req.session);
 });
 
+// LocalStrategy to use username and password with passport.js
 passport.use(new LocalStrategy({
 		usernameField: "email",
 		passwordField: "password"
@@ -126,17 +132,21 @@ passport.use(new LocalStrategy({
 	)
 )
 
+// SerializeUser determines which data of 
+// the user object should be stored in the session. 
 passport.serializeUser((user, done) => {
 	console.log("serializeUser fired.");
 	done(null, user.id)
 })
 
+// DeserializeUser gets data by user id
 passport.deserializeUser((id, done) => {
-	console.log("serializeUser fired.");
+	console.log("deserializeUser fired.");
 	let user = users.find((user) => {
 		return user.id === id
 	})
 	done(null, user)
 })
 
+// Export router
 module.exports = router;

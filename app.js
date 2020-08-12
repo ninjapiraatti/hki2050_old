@@ -25,10 +25,21 @@ var routes = require('./routes/routes');
 
 var app = express();
 
+// Logger gives at least status codes in the backend
 app.use(logger('dev'));
+
+// From docs: Returns middleware that only parses
+// urlencoded bodies and only looks at requests 
+// where the Content-Type header matches the type option.
 app.use(express.urlencoded({ extended: true }));
+
+// Cookie middleware
 app.use(cookieParser());
+
+// All the urls starting with /api will be handled in routes.js
 app.use('/api', routes);
+
+// Serve static assets
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   res.sendFile(path.join (__dirname, './public', 'index.html'));
