@@ -1,8 +1,7 @@
 /* VARIABLES */
 /* Typography */
-@import url("https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Mono:300,300i,700,700i|Roboto:100,100i,300,300i,700,700i&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&family=Overpass:ital,wght@0,100;0,400;0,900;1,400;1,900&display=swap");
 /* Colors */
-/* Gallery hover colors */
 /* Layout */
 /* RESET	*/
 * {
@@ -68,7 +67,7 @@ html {
       font-size: 180%; } }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Overpass", sans-serif;
   font-size: 0.9rem;
   line-height: 1.5; }
 
@@ -116,7 +115,7 @@ sub {
 .h6,
 .wysiwyg h6 {
   margin: 1.5rem 0;
-  font-family: "Oswald", sans-serif; }
+  font-family: "Overpass", sans-serif; }
   .h1:first-child, .wysiwyg h1:first-child,
   .h2:first-child,
   .wysiwyg h2:first-child,
@@ -178,7 +177,7 @@ sub {
 
 blockquote {
   padding: 0.75rem;
-  border-left: solid 0.3em #444;
+  border-left: solid 0.3em #111;
   background: rgba(0, 0, 0, 0.05);
   font-size: 1.25em;
   line-height: 1.2;
@@ -235,7 +234,7 @@ blockquote {
   margin-right: auto; }
 
 pre {
-  font-family: "Roboto Mono", monospace; }
+  font-family: "Overpass Mono", monospace; }
 
 /* LAYOUT  */
 html {
@@ -246,7 +245,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #444;
+  color: #111;
   background-color: #f6f6f6; }
 
 .site-content {
@@ -490,7 +489,7 @@ body {
   width: 16px;
   height: 16px;
   line-height: 1;
-  color: #444; }
+  color: #111; }
 
 .nav--main .active > .nav-link {
   color: #f60056; }
@@ -498,7 +497,7 @@ body {
 .nav--main .nav-link {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  color: #444;
+  color: #111;
   font-size: 0.9rem; }
   .nav--main .nav-link.active {
     color: #f60056; }
@@ -554,7 +553,7 @@ html.no-js .site-header {
 
 /* FOOTER */
 .fat-footer, .site-footer {
-  background: #444;
+  background: #111;
   color: #f6f6f6; }
 
 .fat-footer {
@@ -579,7 +578,7 @@ html.no-js .site-header {
   align-items: center;
   height: 3rem;
   max-width: calc(100% - 6vw - 16px);
-  color: #444; }
+  color: #111; }
   .site-logo__img, .site-logo object {
     height: 1.35rem;
     fill: currentColor; }
@@ -612,7 +611,7 @@ Component specific section modifications should be in the component's .scss file
     margin-top: 3rem; }
   .section--invert {
     color: #f6f6f6;
-    background-color: #444; }
+    background-color: #111; }
   .section--left_image, .section--right_image {
     border-bottom: 0 !important;
     background-size: 300px 300px;
@@ -669,7 +668,7 @@ Component specific section modifications should be in the component's .scss file
     align-items: center;
     padding: 0.5em;
     line-height: 1;
-    color: #444; }
+    color: #111; }
     .dropdown .nav-link.active {
       color: #f6f6f6;
       background-color: #f60056; }
@@ -791,13 +790,14 @@ select,
   .button:focus {
     position: relative;
     z-index: 1;
-    border-color: #9ec0cc;
-    box-shadow: 0 0 0 3px rgba(209, 242, 253, 0.75); }
+    border-color: #4eb6b4;
+    box-shadow: 0 0 0 3px rgba(135, 232, 230, 0.75); }
 
 input[type="text"],
 input[type="number"],
 input[type="tel"],
 input[type="email"],
+input[type="password"],
 select,
 textarea {
   width: 100%;
@@ -813,7 +813,7 @@ textarea {
   resize: vertical; }
 
 ::placeholder {
-  color: rgba(68, 68, 68, 0.33);
+  color: rgba(17, 17, 17, 0.33);
   font-weight: lighter; }
 
 input[type="radio"],
@@ -837,7 +837,7 @@ input[type="radio"] {
     width: 50%;
     height: 50%;
     border-radius: 50%;
-    background-color: #9f0000;
+    background-color: #ff067c;
     transition: transform 0.15s; }
   input[type="radio"]:not(:checked):after {
     transform: scale(0); }
@@ -851,7 +851,7 @@ input[type="checkbox"] {
     left: 50%;
     height: 2px;
     width: 0.75em;
-    background-color: #9f0000;
+    background-color: #ff067c;
     border-radius: 1px;
     transition: width 0.15s; }
   input[type="checkbox"]:before {
@@ -882,26 +882,26 @@ input[type="checkbox"] {
   display: inline-block;
   border-radius: 2px;
   padding: calc(0.375rem - 1px) calc(0.75rem - 1px);
-  background-color: #ace9ff;
+  background-color: #4cdfdd;
   color: #f6f6f6;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
   .button:hover {
-    background-color: #c5f0ff;
+    background-color: #62e3e1;
     color: #f6f6f6; }
   .button:active, .button--active {
-    background-color: #92e3ff;
+    background-color: #37dbd9;
     color: #f6f6f6;
     box-shadow: none; }
   .button--brand {
     background-clip: border-box;
-    background-color: #c5f0ff;
+    background-color: #62e3e1;
     color: #f6f6f6;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2); }
     .button--brand:hover {
-      background-color: #dff7ff;
+      background-color: #78e7e5;
       color: #f6f6f6; }
     .button--brand:active {
-      background-color: #ace9ff;
+      background-color: #4cdfdd;
       color: #f6f6f6; }
 
 /* NOTIFICAITONS */
@@ -925,13 +925,16 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.05);
   background-size: cover;
   background-position: center center; }
   .home-page .section--hero {
     min-height: calc(100vh - 3rem); }
-  .section--hero.section--invert {
-    background-color: rgba(68, 68, 68, 0.5); }
+  .section--hero .logo-splash {
+    width: 75vw;
+    margin: 0 auto; }
+    @media (min-width: 700px) {
+      .section--hero .logo-splash {
+        width: 400px; } }
 
 .hero {
   padding: 1.5rem; }
@@ -952,7 +955,7 @@ input[type="checkbox"] {
     margin-top: 50px;
     display: block;
     position: relative;
-    background-color: #444;
+    background-color: #111;
     color: #f6f6f6;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); }
     @media (min-width: 600px) {
@@ -972,9 +975,9 @@ input[type="checkbox"] {
       margin: 0 auto;
       margin-bottom: -28px;
       margin-top: 1.5rem;
-      background-color: #445aff; }
+      background-color: #efff00; }
       .hero__infobox .button:hover {
-        background-color: #7787ff; }
+        background-color: #f2ff33; }
 
 /* HELPERS */
 .screen-reader-text {

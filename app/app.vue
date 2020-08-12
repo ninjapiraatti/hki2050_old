@@ -1,14 +1,14 @@
 <template>
-	<div class="example">
+	<div class="section section--invert section--login">
 		{{ message }}
-		<div>    
-			<h2>Login</h2>    
-			<form v-on:submit="login">    
-				<input type="text" name="email" /><br>    
-				<input type="password" name="password" /><br>    
-				<input type="submit" value="Login" />    
-			</form>    
-		</div>
+		<h2>Login</h2>    
+		<form v-on:submit="login">
+			<ul class="form-fields">
+				<li class="form-field"><input type="text" placeholder="adamjensen@tor.com" name="email" /></li> 
+				<li class="form-field"><input type="password" placeholder="password" name="password" /></li>    
+				<li class="form-field"><input type="submit" class="button" value="Login" /></li>
+			</ul>
+		</form>    
 	</div>
 </template>
 

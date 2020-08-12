@@ -6,7 +6,6 @@
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
-	background-color: $color-bg-dim;
 	background-size: cover;
 	background-position: center center;
 
@@ -14,8 +13,12 @@
 		min-height: calc(100vh - #{$navbar-height});
 	}
 
-	&.section--invert {
-		background-color: $color-fg-dim;
+	.logo-splash {
+		width: 75vw;
+		margin: 0 auto;
+		@media (min-width: $breakpoint-sm) {
+			width: 400px;
+		}
 	}
 }
 

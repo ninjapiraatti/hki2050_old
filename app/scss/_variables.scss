@@ -3,12 +3,12 @@
 
 /* Typography */
 
-@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Mono:300,300i,700,700i|Roboto:100,100i,300,300i,700,700i&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&family=Overpass:ital,wght@0,100;0,400;0,900;1,400;1,900&display=swap');
 
-$font-sans: 'Roboto', sans-serif;
+$font-sans: 'Overpass', sans-serif;
 $font-serif: serif;
-$font-heading: 'Oswald', sans-serif;
-$font-mono: 'Roboto Mono', monospace;
+$font-heading: 'Overpass', sans-serif;
+$font-mono: 'Overpass Mono', monospace;
 
 $base-font-size: 100%; // Must be a percent
 $line-height: 1.5; // Must be unitless
@@ -18,13 +18,13 @@ $line-height: 1.5; // Must be unitless
 /* Colors */
 
 $color-bg: #f6f6f6;
-$color-fg: #444;
+$color-fg: #111;
 $color-bg-dim: rgba(#000, 0.05);
 $color-fg-dim: fade-out($color-fg, 0.5);
 
-$color-brand: #9f0000;
-$color-brand-2: rgb(197, 240, 255);
-$color-brand-3: #445aff;
+$color-brand: #ff067c;
+$color-brand-2: #62e3e1;
+$color-brand-3: #efff00;
 
 $color-link: rgb(246, 0, 86);
 $color-link-hover: lighten($color-link, 15%);
@@ -36,16 +36,6 @@ $color-button: darken($color-brand-2, 5%);
 $color-focus: $color-brand-2;
 $color-info: #429bf6;
 $color-error: #f75019;
-
-/* Gallery hover colors */
-
-$color-loop: #60c900;
-$color-honey: #7401d5;
-$color-hbp: #ff5782;
-$color-hxgn: #00c8d8;
-
-
-
 
 /* Layout */
 
