@@ -15318,34 +15318,53 @@
   //
   //
   //
-  //
-  //
-  //
 
   var script$3 = {
-  	name: "Register",
-  	data () {
-  		return {
-  			message: "Insert data!"
-  		}
-  	},
-  	methods: {
-  		consoleLog: function() {
-  			console.log("Moro");
-  		},
-  		insertData: async function() {
-  			fetch('/api/insert', {method: 'POST'}).then(data => data.json())
-  			.then(da => console.log(da));
-  		}
-  	}
+    name: 'characterform',
+    props: {
+      character: {
+        type: Object,
+        required: false,
+        default: () => {
+          return {
+            name: '',
+  		  email: '',
+  		  password: '',
+  		  email: '',
+  		  bio: '',
+  		  strength: '',
+  		  perception: '',
+            endurance: '',
+  		  charisma: '',
+  		  intelligence: '',
+  		  agility: '',
+  		  luck: ''
+          };
+        }
+      }
+    },
+    data() {
+      return {
+        errorsPresent: false
+      };
+    },
+    methods: {
+      onSubmit: function() {
+        if (this.character.name === '') {
+          this.errorsPresent = true;
+        } else {
+          this.$emit('createOrUpdate', this.character);
+        }
+      }
+    }
   };
 
   /* script */
   const __vue_script__$3 = script$3;
 
   /* template */
-  var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert section--login"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('h2',[_vm._v("Register")]),_vm._v(" "),_c('p',{staticClass:"small small--dimmed"},[_vm._v("Citizen ranking initiative is powered by Anni Corp. Anni Corp does not accept any liability directly or indirectly caused by its action or inaction.")]),_vm._v(" "),_vm._m(0)])};
-  var __vue_staticRenderFns__$3 = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',[_c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"text","placeholder":"Your Name","name":"name"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"text","placeholder":"adamjensen@tor.com","name":"email"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"password","placeholder":"password","name":"password"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"password","placeholder":"password again","name":"password_verify"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('textarea',{attrs:{"placeholder":"Bio","name":"bio"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Strength","name":"strength"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Perception","name":"perception"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Endurance","name":"endurance"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Charisma","name":"charisma"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Intelligence","name":"intelligence"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Agility","name":"agility"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"number","placeholder":"Luck","name":"luck"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Login"}})])])])}];
+  var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert section--login"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('form',{attrs:{"action":"#"},on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.errorsPresent)?_c('p',{staticClass:"error"},[_vm._v("Please fill out all fields!")]):_vm._e(),_vm._v(" "),_c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.name),expression:"character.name"}],attrs:{"type":"text","placeholder":"Your Name","name":"name"},domProps:{"value":(_vm.character.name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "name", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.email),expression:"character.email"}],attrs:{"type":"text","placeholder":"adamjensen@tor.com","name":"email"},domProps:{"value":(_vm.character.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "email", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.password),expression:"character.password"}],attrs:{"type":"password","placeholder":"password","name":"password"},domProps:{"value":(_vm.character.password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "password", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.bio),expression:"character.bio"}],attrs:{"placeholder":"Bio","name":"bio"},domProps:{"value":(_vm.character.bio)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "bio", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.strength),expression:"character.strength"}],attrs:{"type":"number","placeholder":"Strength","name":"strength"},domProps:{"value":(_vm.character.strength)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "strength", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.perception),expression:"character.perception"}],attrs:{"type":"number","placeholder":"Perception","name":"perception"},domProps:{"value":(_vm.character.perception)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "perception", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.endurance),expression:"character.endurance"}],attrs:{"type":"number","placeholder":"Endurance","name":"endurance"},domProps:{"value":(_vm.character.endurance)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "endurance", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.charisma),expression:"character.charisma"}],attrs:{"type":"number","placeholder":"Charisma","name":"charisma"},domProps:{"value":(_vm.character.charisma)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "charisma", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.intelligence),expression:"character.intelligence"}],attrs:{"type":"number","placeholder":"Intelligence","name":"intelligence"},domProps:{"value":(_vm.character.intelligence)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "intelligence", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.agility),expression:"character.agility"}],attrs:{"type":"number","placeholder":"Agility","name":"agility"},domProps:{"value":(_vm.character.agility)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "agility", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.luck),expression:"character.luck"}],attrs:{"type":"number","placeholder":"Luck","name":"luck"},domProps:{"value":(_vm.character.luck)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "luck", $event.target.value);}}})]),_vm._v(" "),_vm._m(0)])])])};
+  var __vue_staticRenderFns__$3 = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Login"}})])}];
 
     /* style */
     const __vue_inject_styles__$3 = undefined;
@@ -15376,6 +15395,80 @@
       undefined
     );
 
+  //
+  var script$4 = {
+    name: 'Register',
+    components: {
+      'characterform': __vue_component__$3
+    },
+    data: {
+  	  character: {
+  		  "name": "adam"
+  	  }
+    },
+    methods: {
+      createOrUpdate: async function(character) {
+      	//const res = await api.createtask(task);
+  		//this.$router.push(`/tasks/${res._id}`);
+  		fetch('/api/register', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)});
+      }
+    }
+  };
+  /*
+  export default {
+  	name: "Register",
+  	data () {
+  		return {
+  			message: "Insert data!"
+  		}
+  	},
+  	methods: {
+  		consoleLog: function() {
+  			console.log("Moro");
+  		},
+  		insertData: async function() {
+  			fetch('/api/insert', {method: 'POST'}).then(data => data.json())
+  			.then(da => console.log(da))
+  		}
+  	}
+  }*/
+
+  /* script */
+  const __vue_script__$4 = script$4;
+
+  /* template */
+  var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert section--login"},[_c('h2',[_vm._v("Register")]),_vm._v(" "),_c('p',{staticClass:"small small--dimmed"},[_vm._v("Citizen ranking initiative is powered by Anni Corp. Anni Corp does not accept any liability directly or indirectly caused by its action or inaction.")]),_vm._v(" "),_c('characterform',{on:{"createOrUpdate":_vm.createOrUpdate}})],1)};
+  var __vue_staticRenderFns__$4 = [];
+
+    /* style */
+    const __vue_inject_styles__$4 = undefined;
+    /* scoped */
+    const __vue_scope_id__$4 = undefined;
+    /* module identifier */
+    const __vue_module_identifier__$4 = undefined;
+    /* functional template */
+    const __vue_is_functional_template__$4 = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+    /* style inject shadow dom */
+    
+
+    
+    const __vue_component__$4 = /*#__PURE__*/normalizeComponent(
+      { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+      __vue_inject_styles__$4,
+      __vue_script__$4,
+      __vue_scope_id__$4,
+      __vue_is_functional_template__$4,
+      __vue_module_identifier__$4,
+      false,
+      undefined,
+      undefined,
+      undefined
+    );
+
   Vue.use(VueRouter);
 
   const router = new VueRouter({
@@ -15394,7 +15487,7 @@
   		{
   			path: '/register',
   			name: 'register',
-  			component: __vue_component__$3
+  			component: __vue_component__$4
   		},
   		{
   			path: '/logout',

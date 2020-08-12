@@ -18,6 +18,7 @@ router.use(cookieSession({
 router.use(passport.initialize());
 router.use(passport.session());
 
+/*
 var data = [
 	{
 	  name: "John",
@@ -37,6 +38,7 @@ var data = [
 	  }
 	}
   ];
+  */
 
 // Dummy users
 let users = [
@@ -56,17 +58,19 @@ let users = [
 
 // Register route
 router.post("/register", function(req, res) {
-	console.log('Yay, you pressed a button!');
-	characters.insertMany(data, function(err, result) {
+	console.log(req)
+	/*
+	characters.insertMany(req, function(err, result) {
 		if (err) {
 			console.log(err);
 			console.log('ERror');
-		  res.json(err);
+			res.json(err);
 		} else {
 			console.log('Maybe not error');
-		  res.json(result);
+			res.json(result);
 		}
 	  });
+	*/
 });
 
 // Login route
@@ -98,7 +102,7 @@ const authMiddleware = function(req, res, next) {
 	}
 }
 
-// User is called when you want to get some data from them
+// Creating a user
 router.get("/user", authMiddleware, function(req, res) {
 	console.log("Trying to find the user");
 	let user = users.find(user => {
@@ -147,6 +151,8 @@ passport.deserializeUser((id, done) => {
 	})
 	done(null, user)
 })
+
+
 
 // Export router
 module.exports = router;
