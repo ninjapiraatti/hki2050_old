@@ -7,6 +7,7 @@
 				<li class="form-field"><input type="text" placeholder="Your Name" name="name" v-model="character.name" /></li>
 				<li class="form-field"><input type="text" placeholder="adamjensen@tor.com" name="email" v-model="character.email" /></li> 
 				<li class="form-field"><input type="password" placeholder="password" name="password" v-model="character.password" /></li>
+				<li class="form-field"><input type="number" placeholder="id" name="id" v-model="character.id" /></li>
 				<li class="form-field"><textarea placeholder="Bio" name="bio" v-model="character.bio" /></li>
 				<li class="form-field"><input type="number" placeholder="Strength" name="strength" v-model="character.basestats.strength" /></li>
 				<li class="form-field"><input type="number" placeholder="Perception" name="perception" v-model="character.basestats.perception" /></li> 
@@ -33,6 +34,7 @@ export default {
           name: '',
 		  email: '',
 		  password: '',
+		  id: '',
 		  email: '',
 		  bio: '',
 		  basestats: {

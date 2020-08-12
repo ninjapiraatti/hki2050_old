@@ -38,9 +38,10 @@ var data = [
 	  }
 	}
   ];
-  */
+*/
 
-// Dummy users
+// Get characters from Mongo
+
 let users = [
 	{
 		id: 1,
@@ -55,6 +56,8 @@ let users = [
 		password: "p"
 	}
 ]
+
+
 
 // Register route
 router.post("/register", function(req, res) {
@@ -112,6 +115,30 @@ router.get("/user", authMiddleware, function(req, res) {
 	res.json(req.session);
 });
 
+/*
+// LocalStrategy to use username and password with passport.js
+passport.use(new LocalStrategy({
+	usernameField: "name",
+	passwordField: "password"
+	},
+	(username, password, done) => {
+		let user = users.find((user) => {
+			return user.email === username && user.password === password
+		})
+		if (user) {
+			console.log("There is a user");
+			console.log("Passport Localstrategy email: " + user.email);
+			console.log("Passport Localstrategy password: " + user.password);
+			done(null, user)
+		} else {
+			console.log("Well somethings fucked")
+			done(null, false, {message: 'Incorrect username or password'})
+		}
+	}
+)
+*/
+
+
 // LocalStrategy to use username and password with passport.js
 passport.use(new LocalStrategy({
 		usernameField: "email",
@@ -133,6 +160,7 @@ passport.use(new LocalStrategy({
 		}
 	)
 )
+
 
 // SerializeUser determines which data of 
 // the user object should be stored in the session. 

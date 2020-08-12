@@ -6,7 +6,13 @@ let characterSchema = new Schema(
   {
     name: {
       type: String
-    },
+	},
+	password: {
+		type: String
+	},
+	id: {
+		type: Number
+	},
     age: {
       type: Number
     },
