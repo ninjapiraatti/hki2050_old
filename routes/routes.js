@@ -93,15 +93,15 @@ router.post("/register", function(req, res) {
 router.post('/login',
 	passport.authenticate('local'),
 	function(req, res) {
-	console.log("Login found a user by email: " + req.user);
-	console.log(req.user);
+	console.log("Login found a user by name: " + req.user.username);
+	//console.log(req.user);
 	//return res.send(req.user);
 	res.json(req.user);
 });
 
 // Logout route
 router.get("/logout", function(req, res) {
-	User.register(new User({username: "ninjapiraatti"}), "p");
+	//User.register(new User({username: "ninjapiraatti"}), "p");
 	users.findOne({username: 'ninjapiraatti'}, function(err,obj) { console.log(obj.email); });
 	req.logout();
 	console.log("logged out")
@@ -115,7 +115,7 @@ const authMiddleware = function(req, res, next) {
 		res.status(401).send('You are not authenticated')
 		return;
 	} else {
-		console.log("Middleware req data (name): " + req.user.name);
+		console.log("Middleware req data (name): " + req.user.username);
 		return next()
 	}
 }
@@ -126,7 +126,7 @@ router.get("/user", authMiddleware, function(req, res) {
 	let user = users.find(user => {
 	  return user.id === req.session.passport.user
 	})
-	console.log(user)
+	console.log(user.username)
 	//res.send("Jippii")
 	//return res.send([req.session.passport.user, "Jippii"]);
 	res.json(req.session);
