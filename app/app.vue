@@ -4,7 +4,7 @@
 		<h2>Login</h2>    
 		<form v-on:submit="login">
 			<ul class="form-fields">
-				<li class="form-field"><input type="text" placeholder="adamjensen@tor.com" name="email" /></li> 
+				<li class="form-field"><input type="text" placeholder="adamjensen" name="username" /></li> 
 				<li class="form-field"><input type="password" placeholder="password" name="password" /></li>    
 				<li class="form-field"><input type="submit" class="button" value="Login" /></li>
 			</ul>
@@ -24,11 +24,11 @@ export default {
 		login: async function(e) {
 		//login: (e) => {    
 			e.preventDefault()    
-			let email = e.target.elements.email.value
+			let username = e.target.elements.username.value
 			let password = e.target.elements.password.value 
 			let login = () => {   
 				let data = {    
-					"email": email,    
+					"username": username,    
 					"password": password
 				}
 				//fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})

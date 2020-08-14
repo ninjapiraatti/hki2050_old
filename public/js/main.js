@@ -15022,11 +15022,11 @@
   		login: async function(e) {
   		//login: (e) => {    
   			e.preventDefault();    
-  			let email = e.target.elements.email.value;
+  			let username = e.target.elements.username.value;
   			let password = e.target.elements.password.value; 
   			let login = () => {   
   				let data = {    
-  					"email": email,    
+  					"username": username,    
   					"password": password
   				};
   				//fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
@@ -15130,7 +15130,7 @@
 
   /* template */
   var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert section--login"},[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('h2',[_vm._v("Login")]),_vm._v(" "),_c('form',{on:{"submit":_vm.login}},[_vm._m(0)])])};
-  var __vue_staticRenderFns__ = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"text","placeholder":"adamjensen@tor.com","name":"email"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"password","placeholder":"password","name":"password"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Login"}})])])}];
+  var __vue_staticRenderFns__ = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"text","placeholder":"adamjensen","name":"username"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{attrs:{"type":"password","placeholder":"password","name":"password"}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Login"}})])])}];
 
     /* style */
     const __vue_inject_styles__ = undefined;
