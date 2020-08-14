@@ -30,6 +30,7 @@
 		"morgan": "~1.9.1",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
+		"passport-local-mongoose": "^6.0.1",
 		"rollup": "^2.23.0",
 		"rollup-plugin-vue": "^5.1.6",
 		"vue": "^2.6.11",

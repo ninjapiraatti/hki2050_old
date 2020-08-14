@@ -5,6 +5,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const characters = require('../models/characters');
+const users = require('../models/users');
+const User = require('../models/muser');
 router.use(express.json());
 
 // Set cookie
@@ -42,6 +44,7 @@ var data = [
 
 // Get characters from Mongo
 
+/*
 let users = [
 	{
 		id: 1,
@@ -56,6 +59,18 @@ let users = [
 		password: "p"
 	}
 ]
+*/
+
+/*
+var firstuser = [
+	{
+	  username: "ninjapiraatti",
+	  email: "tuomas.louekari@planetoidi.com",
+	  password: "p",
+	  id: "1"
+	}
+  ];
+  */
 
 
 
@@ -86,6 +101,8 @@ router.post('/login',
 
 // Logout route
 router.get("/logout", function(req, res) {
+	User.register(new User({username: "ninjapiraatti"}), "p");
+	users.findOne({username: 'ninjapiraatti'}, function(err,obj) { console.log(obj.email); });
 	req.logout();
 	console.log("logged out")
 	return res.send();
@@ -138,7 +155,10 @@ passport.use(new LocalStrategy({
 )
 */
 
+//passport.use(new LocalStrategy(User.authenticate()));
+passport.use(User.createStrategy());
 
+/*
 // LocalStrategy to use username and password with passport.js
 passport.use(new LocalStrategy({
 		usernameField: "email",
@@ -159,9 +179,9 @@ passport.use(new LocalStrategy({
 			}
 		}
 	)
-)
+)*/
 
-
+/*
 // SerializeUser determines which data of 
 // the user object should be stored in the session. 
 passport.serializeUser((user, done) => {
@@ -176,7 +196,10 @@ passport.deserializeUser((id, done) => {
 		return user.id === id
 	})
 	done(null, user)
-})
+})*/
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 
