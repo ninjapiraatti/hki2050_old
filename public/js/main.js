@@ -15040,6 +15040,7 @@
   						this.$router.push('dashboard');
   					})    
   					.catch((errors) => {    
+  						this.flash('Validation failed', 'error');
   						console.log("Vue got Error");
   						console.log("Error data: " + response);
   						this.$router.push('logout');

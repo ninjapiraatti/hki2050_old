@@ -8,7 +8,7 @@
 				<li class="form-field"><input type="password" placeholder="password" name="password" /></li>    
 				<li class="form-field"><input type="submit" class="button" value="Login" /></li>
 			</ul>
-		</form>    
+		</form> 
 	</div>
 </template>
 
@@ -42,6 +42,7 @@ export default {
 						this.$router.push('dashboard');
 					})    
 					.catch((errors) => {    
+						this.flash('Validation failed', 'error');
 						console.log("Vue got Error");
 						console.log("Error data: " + response);
 						this.$router.push('logout');
