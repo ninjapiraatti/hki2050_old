@@ -20,60 +20,6 @@ router.use(cookieSession({
 router.use(passport.initialize());
 router.use(passport.session());
 
-/*
-var data = [
-	{
-	  name: "John",
-	  age: 21,
-	  bio: "John is a good guy.",
-	  image: "ImageURL",
-	  dem: 150,
-	  id: "79b82da",
-	  basestats: {
-		  strength: 5,
-		  perception: 5,
-		  endurance: 5,
-		  charisma: 5,
-		  intelligence: 5,
-		  agility: 5,
-		  luck: 5
-	  }
-	}
-  ];
-*/
-
-// Get characters from Mongo
-
-/*
-let users = [
-	{
-		id: 1,
-		name: "tlouekar",
-		email: "tlouekar@student.hive.fi",
-		password: "p"
-	},
-	{
-		id: 2,
-		name: "User",
-		email: "u@u",
-		password: "p"
-	}
-]
-*/
-
-/*
-var firstuser = [
-	{
-	  username: "ninjapiraatti",
-	  email: "tuomas.louekari@planetoidi.com",
-	  password: "p",
-	  id: "1"
-	}
-  ];
-  */
-
-
-
 // Register route
 router.post("/register", function(req, res) {
 	console.log(req.body)
@@ -121,95 +67,18 @@ const authMiddleware = function(req, res, next) {
 	}
 }
 
-// Getting the user
+// User route basically just returns the session which we can use to print user data and such
 router.get("/user", authMiddleware, function(req, res) {
-	console.log("Trying to find the user");
-	//console.log(users.findOne({username: 'ninjapiraatti'}));
-	/*let user = User.findOne({username: 'ninjapiraatti'})(user => {
-	  return user.id === req.session.passport.user
-	})*/
-	let user = User.findOne({'username': req.user.username});
-	console.log(user._id);
-	if (user._id === req.session.passport.user._id) {
-		res.json(req.session);
-	}
-	else {
-		console.log("Ids don't match.")
-	}
-	//res.send("Jippii")
-	//return res.send([req.session.passport.user, "Jippii"]);
+	res.json(req.session);
 });
 
-/*
-// LocalStrategy to use username and password with passport.js
-passport.use(new LocalStrategy({
-	usernameField: "name",
-	passwordField: "password"
-	},
-	(username, password, done) => {
-		let user = users.find((user) => {
-			return user.email === username && user.password === password
-		})
-		if (user) {
-			console.log("There is a user");
-			console.log("Passport Localstrategy email: " + user.email);
-			console.log("Passport Localstrategy password: " + user.password);
-			done(null, user)
-		} else {
-			console.log("Well somethings fucked")
-			done(null, false, {message: 'Incorrect username or password'})
-		}
-	}
-)
-*/
-
+//Using passport here with mongoose
 //passport.use(new LocalStrategy(User.authenticate()));
 passport.use(User.createStrategy());
 
-/*
-// LocalStrategy to use username and password with passport.js
-passport.use(new LocalStrategy({
-		usernameField: "email",
-		passwordField: "password"
-		},
-		(username, password, done) => {
-			let user = users.find((user) => {
-				return user.email === username && user.password === password
-			})
-			if (user) {
-				console.log("There is a user");
-				console.log("Passport Localstrategy email: " + user.email);
-				console.log("Passport Localstrategy password: " + user.password);
-				done(null, user)
-			} else {
-				console.log("Well somethings fucked")
-				done(null, false, {message: 'Incorrect username or password'})
-			}
-		}
-	)
-)*/
-
-/*
-// SerializeUser determines which data of 
-// the user object should be stored in the session. 
-passport.serializeUser((user, done) => {
-	console.log("serializeUser fired.");
-	done(null, user.id)
-})
-
-// DeserializeUser gets data by user id
-passport.deserializeUser((id, done) => {
-	console.log("deserializeUser fired.");
-	let user = users.find((user) => {
-		return user.id === id
-	})
-	done(null, user)
-})*/
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-
 
 // Export router
 module.exports = router;
