@@ -15036,7 +15036,7 @@
   						console.log("Vue got Response");
   						//console.log("Response data: " + response);
   						localStorage.setItem('user', JSON.stringify(response));
-  						console.log(JSON.parse(localStorage.getItem('user')));
+  						//console.log(JSON.parse(localStorage.getItem('user')));
   						this.$router.push('dashboard');
   					})    
   					.catch((errors) => {    
@@ -15248,7 +15248,7 @@
   				.then(response => { 
   					//if (response.status != 200)
   					//throw new Error ("No good");
-  					console.log(JSON.parse(localStorage.getItem('user')));
+  					//console.log(JSON.parse(localStorage.getItem('user')));
   					console.log("dashboard.vue got response from api/user.");
   					self.$set(this, "user", JSON.parse(localStorage.getItem('user')));
   					//self.$set(this, "user", JSON.parse(localStorage.getItem('user')));
@@ -15265,10 +15265,12 @@
   				fetch('api/get_characters', {method: 'GET'})
   				.then((response) => response.json())
   				.then(response => { 
-  					self.$set(this, "character", JSON.parse(response));
+  					console.log(response.name);
+  					self.$set(this, "character", response);
   				})    
   				.catch((errors) => {    
   					console.log("Could not get characters");
+  					console.log(errors);
   					this.$router.push('/logout'); 
   				});    
   			}

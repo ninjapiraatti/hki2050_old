@@ -38,7 +38,7 @@ export default {
 						console.log("Vue got Response");
 						//console.log("Response data: " + response);
 						localStorage.setItem('user', JSON.stringify(response));
-						console.log(JSON.parse(localStorage.getItem('user')));
+						//console.log(JSON.parse(localStorage.getItem('user')));
 						this.$router.push('dashboard');
 					})    
 					.catch((errors) => {    
