@@ -35,7 +35,6 @@
 		"rollup-plugin-vue": "^5.1.6",
 		"vue": "^2.6.11",
 		"vue-cookies": "^1.7.3",
-		"vue-flash-message": "^0.7.2",
 		"vue-router": "^3.3.4",
 		"vue-template-compiler": "^2.6.11"
 	}
