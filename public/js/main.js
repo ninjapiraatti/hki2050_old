@@ -15035,8 +15035,8 @@
   					.then((response) => {    
   						console.log("Vue got Response");
   						//console.log("Response data: " + response);
-  						console.log(response);
   						localStorage.setItem('user', JSON.stringify(response));
+  						console.log(JSON.parse(localStorage.getItem('user')));
   						this.$router.push('dashboard');
   					})    
   					.catch((errors) => {    
@@ -15229,7 +15229,7 @@
           data() {    
               return {
                   user: {    
-                      name: "User"    
+                      username: "User"    
                   }    
               }    
           },   
@@ -15263,7 +15263,7 @@
   const __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert"},[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.name))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")])])};
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert"},[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.username))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")])])};
   var __vue_staticRenderFns__$2 = [];
 
     /* style */

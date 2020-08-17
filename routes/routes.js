@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const characters = require('../models/characters');
-const users = require('../models/users');
+//const users = require('../models/users');
 const User = require('../models/muser');
 router.use(express.json());
 
@@ -93,16 +93,16 @@ router.post("/register", function(req, res) {
 router.post('/login',
 	passport.authenticate('local'),
 	function(req, res) {
-	console.log("Login found a user by name: " + req.user.username);
-	//console.log(req.user);
+	//console.log("Login found a user by name: " + req.user.username);
+	User.findOne({'username': req.user.username}, function(err,obj) { console.log("Login found a user by name: " + obj.username); });
 	//return res.send(req.user);
 	res.json(req.user);
 });
 
 // Logout route
 router.get("/logout", function(req, res) {
-	//User.register(new User({username: "ninjapiraatti"}), "p");
-	users.findOne({username: 'ninjapiraatti'}, function(err,obj) { console.log(obj.email); });
+	//User.register(new User({username: "tuoppi"}), "p");
+	User.findOne({'username': req.user.username}, function(err,obj) { console.log(obj.username); });
 	req.logout();
 	console.log("logged out")
 	return res.send();
@@ -116,20 +116,28 @@ const authMiddleware = function(req, res, next) {
 		return;
 	} else {
 		console.log("Middleware req data (name): " + req.user.username);
+		User.findOne({'username': req.user.username}, function(err,obj) { console.log("Middleware says username " + obj.username); });
 		return next()
 	}
 }
 
-// Creating a user
+// Getting the user
 router.get("/user", authMiddleware, function(req, res) {
 	console.log("Trying to find the user");
-	let user = users.find(user => {
+	//console.log(users.findOne({username: 'ninjapiraatti'}));
+	/*let user = User.findOne({username: 'ninjapiraatti'})(user => {
 	  return user.id === req.session.passport.user
-	})
-	console.log(user.username)
+	})*/
+	let user = User.findOne({'username': req.user.username});
+	console.log(user._id);
+	if (user._id === req.session.passport.user._id) {
+		res.json(req.session);
+	}
+	else {
+		console.log("Ids don't match.")
+	}
 	//res.send("Jippii")
 	//return res.send([req.session.passport.user, "Jippii"]);
-	res.json(req.session);
 });
 
 /*

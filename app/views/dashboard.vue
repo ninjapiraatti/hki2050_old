@@ -1,7 +1,7 @@
 <template>
 	<div class="section section--invert">    
 		<h2>Dashboard</h2>    
-		<p>Name: {{ user.name }}</p>
+		<p>Name: {{ user.username }}</p>
 		<a href="api/logout">logout</a>    
     </div>
 </template>
@@ -12,7 +12,7 @@
         data() {    
             return {
                 user: {    
-                    name: "User"    
+                    username: "User"    
                 }    
             }    
         },   
