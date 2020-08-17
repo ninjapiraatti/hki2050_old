@@ -5,6 +5,8 @@
 			<p v-if="errorsPresent" class="error">Please fill out all fields!</p>
 			<ul class="form-fields">
 				<li class="form-field"><input type="text" placeholder="Your Name" name="name" v-model="character.name" /></li>
+				<li class="form-field"><input type="text" placeholder="adamjensen@tor.com" name="email" v-model="character.email" /></li> 
+				<li class="form-field"><input type="password" placeholder="password" name="password" v-model="character.password" /></li>
 				<li class="form-field"><input type="number" placeholder="id" name="id" v-model="character.id" /></li>
 				<li class="form-field"><textarea placeholder="Bio" name="bio" v-model="character.bio" /></li>
 				<li class="form-field"><input type="number" placeholder="Strength" name="strength" v-model="character.basestats.strength" /></li>
@@ -30,11 +32,11 @@ export default {
       default: () => {
         return {
           name: '',
+		  email: '',
+		  password: '',
 		  id: '',
+		  email: '',
 		  bio: '',
-		  image: '',
-		  dem: 100,
-		  owner: JSON.parse(localStorage.getItem('user')),
 		  basestats: {
 			strength: '',
 			perception: '',

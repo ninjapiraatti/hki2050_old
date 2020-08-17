@@ -2,7 +2,9 @@
 	<div class="section section--invert">    
 		<h2>Dashboard</h2>    
 		<p>Name: {{ user.username }}</p>
-		<a href="api/logout">logout</a>    
+		<a href="api/logout">logout</a>
+		<h3>Characters</h3>
+		<div>{{ character.name }}</div>   
     </div>
 </template>
 
@@ -13,12 +15,15 @@
             return {
                 user: {    
                     username: "User"    
-                }    
+				},
+				character: {
+					name: "Adam Jensen"
+				}
             }    
         },   
         methods: {    
             getUserData: function() {
-				console.log("dashboard.vue fired.");
+				console.log("getUserData fired.");
                 let self = this    
 				fetch('api/user', {method: 'GET'})
 				.then((response) => response.json())
@@ -35,10 +40,24 @@
 					console.log("Error from user/api:" + errors)    
 					this.$router.push('/logout'); 
 				})    
+			},
+			getCharacterData: function() {
+				console.log("getCharacterData fired.");
+                let self = this    
+				fetch('api/get_characters', {method: 'GET'})
+				.then((response) => response.json())
+				.then(response => { 
+					self.$set(this, "character", JSON.parse(response));
+				})    
+				.catch((errors) => {    
+					console.log("Could not get characters");
+					this.$router.push('/logout'); 
+				})    
 			}
 		}, 
 		mounted() {    
-			this.getUserData()    
+			this.getUserData()
+			this.getCharacterData()  
 		}
     }
 </script>

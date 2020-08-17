@@ -7,9 +7,6 @@ let characterSchema = new Schema(
     name: {
       type: String
 	},
-	password: {
-		type: String
-	},
 	id: {
 		type: Number
 	},
@@ -24,10 +21,10 @@ let characterSchema = new Schema(
     },
     dem: {
       type: Number
-    },
-    id: {
-      type: String
-    },
+	},
+	owner: {
+		type: String
+	},
     basestats: {
       strength: {
         type: Number

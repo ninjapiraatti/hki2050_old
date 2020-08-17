@@ -3,9 +3,8 @@ const express = require('express');
 const router = express.Router();
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy
+//const LocalStrategy = require('passport-local').Strategy
 const characters = require('../models/characters');
-//const users = require('../models/users');
 const User = require('../models/muser');
 router.use(express.json());
 
@@ -30,6 +29,21 @@ router.post("/register", function(req, res) {
 			res.json(err);
 		} else {
 			console.log('Maybe not error');
+			res.json(result);
+		}
+	  });
+});
+
+// Register route
+router.post("/create", function(req, res) {
+	console.log(req.body)
+	characters.insertMany(req.body, function(err, result) {
+		if (err) {
+			console.log(err);
+			console.log('Character creation failed');
+			res.json(err);
+		} else {
+			console.log('Character created');
 			res.json(result);
 		}
 	  });
@@ -70,6 +84,14 @@ const authMiddleware = function(req, res, next) {
 // User route basically just returns the session which we can use to print user data and such
 router.get("/user", authMiddleware, function(req, res) {
 	res.json(req.session);
+});
+
+// List user's characters
+router.get("/get_characters", authMiddleware, function(req, res) {
+	character.findOne({'owner': req.user}, function(err,obj) { 
+		console.log(obj.name); 
+		res.json(obj);
+	});
 });
 
 //Using passport here with mongoose

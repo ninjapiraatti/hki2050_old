@@ -15224,6 +15224,8 @@
   //
   //
   //
+  //
+  //
    
       var script$2 = {    
           name: "Dashboard",    
@@ -15231,12 +15233,15 @@
               return {
                   user: {    
                       username: "User"    
-                  }    
+  				},
+  				character: {
+  					name: "Adam Jensen"
+  				}
               }    
           },   
           methods: {    
               getUserData: function() {
-  				console.log("dashboard.vue fired.");
+  				console.log("getUserData fired.");
                   let self = this;    
   				fetch('api/user', {method: 'GET'})
   				.then((response) => response.json())
@@ -15253,10 +15258,24 @@
   					console.log("Error from user/api:" + errors);    
   					this.$router.push('/logout'); 
   				});    
+  			},
+  			getCharacterData: function() {
+  				console.log("getCharacterData fired.");
+                  let self = this;    
+  				fetch('api/get_characters', {method: 'GET'})
+  				.then((response) => response.json())
+  				.then(response => { 
+  					self.$set(this, "character", JSON.parse(response));
+  				})    
+  				.catch((errors) => {    
+  					console.log("Could not get characters");
+  					this.$router.push('/logout'); 
+  				});    
   			}
   		}, 
   		mounted() {    
-  			this.getUserData();    
+  			this.getUserData();
+  			this.getCharacterData();  
   		}
       };
 
@@ -15264,7 +15283,7 @@
   const __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert"},[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.username))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")])])};
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert"},[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.username))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")]),_vm._v(" "),_c('h3',[_vm._v("Characters")]),_vm._v(" "),_c('div',[_vm._v(_vm._s(_vm.character.name))])])};
   var __vue_staticRenderFns__$2 = [];
 
     /* style */
@@ -15318,8 +15337,6 @@
   //
   //
   //
-  //
-  //
 
   var script$3 = {
     name: 'characterform',
@@ -15330,11 +15347,11 @@
         default: () => {
           return {
             name: '',
-  		  email: '',
-  		  password: '',
   		  id: '',
-  		  email: '',
   		  bio: '',
+  		  image: '',
+  		  dem: 100,
+  		  owner: JSON.parse(localStorage.getItem('user')),
   		  basestats: {
   			strength: '',
   			perception: '',
@@ -15368,7 +15385,7 @@
   const __vue_script__$3 = script$3;
 
   /* template */
-  var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('form',{attrs:{"action":"#"},on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.errorsPresent)?_c('p',{staticClass:"error"},[_vm._v("Please fill out all fields!")]):_vm._e(),_vm._v(" "),_c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.name),expression:"character.name"}],attrs:{"type":"text","placeholder":"Your Name","name":"name"},domProps:{"value":(_vm.character.name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "name", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.email),expression:"character.email"}],attrs:{"type":"text","placeholder":"adamjensen@tor.com","name":"email"},domProps:{"value":(_vm.character.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "email", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.password),expression:"character.password"}],attrs:{"type":"password","placeholder":"password","name":"password"},domProps:{"value":(_vm.character.password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "password", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.id),expression:"character.id"}],attrs:{"type":"number","placeholder":"id","name":"id"},domProps:{"value":(_vm.character.id)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "id", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.bio),expression:"character.bio"}],attrs:{"placeholder":"Bio","name":"bio"},domProps:{"value":(_vm.character.bio)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "bio", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.strength),expression:"character.basestats.strength"}],attrs:{"type":"number","placeholder":"Strength","name":"strength"},domProps:{"value":(_vm.character.basestats.strength)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "strength", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.perception),expression:"character.basestats.perception"}],attrs:{"type":"number","placeholder":"Perception","name":"perception"},domProps:{"value":(_vm.character.basestats.perception)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "perception", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.endurance),expression:"character.basestats.endurance"}],attrs:{"type":"number","placeholder":"Endurance","name":"endurance"},domProps:{"value":(_vm.character.basestats.endurance)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "endurance", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.charisma),expression:"character.basestats.charisma"}],attrs:{"type":"number","placeholder":"Charisma","name":"charisma"},domProps:{"value":(_vm.character.basestats.charisma)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "charisma", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.intelligence),expression:"character.basestats.intelligence"}],attrs:{"type":"number","placeholder":"Intelligence","name":"intelligence"},domProps:{"value":(_vm.character.basestats.intelligence)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "intelligence", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.agility),expression:"character.basestats.agility"}],attrs:{"type":"number","placeholder":"Agility","name":"agility"},domProps:{"value":(_vm.character.basestats.agility)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "agility", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.luck),expression:"character.basestats.luck"}],attrs:{"type":"number","placeholder":"Luck","name":"luck"},domProps:{"value":(_vm.character.basestats.luck)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "luck", $event.target.value);}}})]),_vm._v(" "),_vm._m(0)])])])};
+  var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('form',{attrs:{"action":"#"},on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.errorsPresent)?_c('p',{staticClass:"error"},[_vm._v("Please fill out all fields!")]):_vm._e(),_vm._v(" "),_c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.name),expression:"character.name"}],attrs:{"type":"text","placeholder":"Your Name","name":"name"},domProps:{"value":(_vm.character.name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "name", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.id),expression:"character.id"}],attrs:{"type":"number","placeholder":"id","name":"id"},domProps:{"value":(_vm.character.id)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "id", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.bio),expression:"character.bio"}],attrs:{"placeholder":"Bio","name":"bio"},domProps:{"value":(_vm.character.bio)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "bio", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.strength),expression:"character.basestats.strength"}],attrs:{"type":"number","placeholder":"Strength","name":"strength"},domProps:{"value":(_vm.character.basestats.strength)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "strength", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.perception),expression:"character.basestats.perception"}],attrs:{"type":"number","placeholder":"Perception","name":"perception"},domProps:{"value":(_vm.character.basestats.perception)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "perception", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.endurance),expression:"character.basestats.endurance"}],attrs:{"type":"number","placeholder":"Endurance","name":"endurance"},domProps:{"value":(_vm.character.basestats.endurance)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "endurance", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.charisma),expression:"character.basestats.charisma"}],attrs:{"type":"number","placeholder":"Charisma","name":"charisma"},domProps:{"value":(_vm.character.basestats.charisma)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "charisma", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.intelligence),expression:"character.basestats.intelligence"}],attrs:{"type":"number","placeholder":"Intelligence","name":"intelligence"},domProps:{"value":(_vm.character.basestats.intelligence)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "intelligence", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.agility),expression:"character.basestats.agility"}],attrs:{"type":"number","placeholder":"Agility","name":"agility"},domProps:{"value":(_vm.character.basestats.agility)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "agility", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.luck),expression:"character.basestats.luck"}],attrs:{"type":"number","placeholder":"Luck","name":"luck"},domProps:{"value":(_vm.character.basestats.luck)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "luck", $event.target.value);}}})]),_vm._v(" "),_vm._m(0)])])])};
   var __vue_staticRenderFns__$3 = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Login"}})])}];
 
     /* style */
@@ -15449,6 +15466,55 @@
       undefined
     );
 
+  //
+  var script$5 = {
+    name: 'Create',
+    components: {
+      'characterform': __vue_component__$3
+    },
+    methods: {
+      createOrUpdate: async function(character) {
+  		fetch('/api/create', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(character)});
+      }
+    }
+  };
+
+  /* script */
+  const __vue_script__$5 = script$5;
+
+  /* template */
+  var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert section--login"},[_c('h2',[_vm._v("Register to CRI")]),_vm._v(" "),_c('p',{staticClass:"small small--dimmed"},[_vm._v("Citizen ranking initiative is powered by Anni Corp. Anni Corp does not accept any liability directly or indirectly caused by its action or inaction.")]),_vm._v(" "),_c('characterform',{on:{"createOrUpdate":_vm.createOrUpdate}})],1)};
+  var __vue_staticRenderFns__$5 = [];
+
+    /* style */
+    const __vue_inject_styles__$5 = undefined;
+    /* scoped */
+    const __vue_scope_id__$5 = undefined;
+    /* module identifier */
+    const __vue_module_identifier__$5 = undefined;
+    /* functional template */
+    const __vue_is_functional_template__$5 = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+    /* style inject shadow dom */
+    
+
+    
+    const __vue_component__$5 = /*#__PURE__*/normalizeComponent(
+      { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+      __vue_inject_styles__$5,
+      __vue_script__$5,
+      __vue_scope_id__$5,
+      __vue_is_functional_template__$5,
+      __vue_module_identifier__$5,
+      false,
+      undefined,
+      undefined,
+      undefined
+    );
+
   Vue.use(VueRouter);
 
   const router = new VueRouter({
@@ -15468,6 +15534,11 @@
   			path: '/register',
   			name: 'register',
   			component: __vue_component__$4
+  		},
+  		{
+  			path: '/create',
+  			name: 'create',
+  			component: __vue_component__$5
   		},
   		{
   			path: '/logout',

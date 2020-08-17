@@ -5,6 +5,7 @@ import Notfound from '../app.vue'
 import Logout from '../views/logout.vue'
 import Dashboard from '../views/dashboard.vue'
 import Register from '../views/register.vue'
+import Create from '../views/character_create.vue'
 
 Vue.use(Router);
 
@@ -25,6 +26,11 @@ const router = new Router({
 			path: '/register',
 			name: 'register',
 			component: Register
+		},
+		{
+			path: '/create',
+			name: 'create',
+			component: Create
 		},
 		{
 			path: '/logout',
