@@ -88,8 +88,9 @@ router.get("/user", authMiddleware, function(req, res) {
 
 // List user's characters
 router.get("/get_characters", authMiddleware, function(req, res) {
-	character.findOne({'owner': req.user}, function(err,obj) { 
-		console.log(obj.name); 
+	console.log(req.user._id);
+	characters.findOne({'owner': req.user_id}, function(err,obj) { 
+		console.log(obj); 
 		res.json(obj);
 	});
 });
