@@ -38,7 +38,7 @@
 				.catch((errors) => {    
 					console.log("Could not get characters");
 					console.log(errors);
-					this.$router.push('/logout'); 
+					this.$router.push('create'); 
 				})    
 			}
 		}, 

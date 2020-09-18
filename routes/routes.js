@@ -22,19 +22,10 @@ router.use(passport.session());
 // Register route
 router.post("/register", function(req, res) {
 	console.log(req.body)
-	characters.insertMany(req.body, function(err, result) {
-		if (err) {
-			console.log(err);
-			console.log('ERror');
-			res.json(err);
-		} else {
-			console.log('Maybe not error');
-			res.json(result);
-		}
-	  });
+	User.register(new User({username: req.body.name}), req.body.password); // Is this safe?
 });
 
-// Register route
+// Create route
 router.post("/create", function(req, res) {
 	console.log(req.body)
 	characters.insertMany(req.body, function(err, result) {
@@ -46,7 +37,7 @@ router.post("/create", function(req, res) {
 			console.log('Character created');
 			res.json(result);
 		}
-	  });
+	});
 });
 
 // Login route
@@ -90,8 +81,14 @@ router.get("/user", authMiddleware, function(req, res) {
 router.get("/get_characters", authMiddleware, function(req, res) {
 	console.log(req.user._id);
 	characters.findOne({'owner': req.user._id}, function(err,obj) { 
-		console.log(obj.owner); 
-		res.json(obj);
+		if (err) {
+			console.log(err);
+			console.log('Characters not found on this owner');
+			res.json(err);
+		} else {
+			console.log(obj.owner); 
+			res.json(obj);
+		}
 	});
 });
 

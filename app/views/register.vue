@@ -2,21 +2,21 @@
 	<div class="section section--invert section--login">
     	<h2>Register</h2>
 		<p class="small small--dimmed">Citizen ranking initiative is powered by Anni Corp. Anni Corp does not accept any liability directly or indirectly caused by its action or inaction.</p>
-		<characterform @createOrUpdate="createOrUpdate"></characterform>
+		<userform @createOrUpdate="createOrUpdate"></userform>
 	</div>
 </template>
   
 
 <script>
-import characterForm from '../../components/characterForm.vue';
+import userForm from '../../components/userForm.vue';
 export default {
   name: 'Register',
   components: {
-    'characterform': characterForm
+    'userform': userForm
   },
   methods: {
-    createOrUpdate: async function(character) {
-		fetch('/api/register', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(character)})
+    createOrUpdate: async function(user) {
+		fetch('/api/register', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(user)})
     }
   }
 };
