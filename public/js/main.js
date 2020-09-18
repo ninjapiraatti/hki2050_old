@@ -15256,7 +15256,7 @@
   				.catch((errors) => {    
   					console.log("Could not get characters");
   					console.log(errors);
-  					this.$router.push('create'); 
+  					this.$router.push('/create'); 
   				});    
   			}
   		}, 
