@@ -15226,6 +15226,12 @@
   //
   //
   //
+  //
+  //
+  //
+  //
+  //
+  //
    
       var script$2 = {    
           name: "Dashboard",    
@@ -15234,9 +15240,9 @@
                   user: {    
                       username: "User"    
   				},
-  				character: {
-  					name: "Adam Jensen"
-  				}
+  				characters: [
+
+  				]
               }    
           },   
           methods: {    
@@ -15251,7 +15257,7 @@
   				.then((response) => response.json())
   				.then(response => { 
   					console.log(response.name);
-  					self.$set(this, "character", response);
+  					self.$set(this, "characters", response);
   				})    
   				.catch((errors) => {    
   					console.log("Could not get characters");
@@ -15270,7 +15276,7 @@
   const __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert"},[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.username))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")]),_vm._v(" "),_c('h3',[_vm._v("Characters")]),_vm._v(" "),_c('div',[_vm._v(_vm._s(_vm.character.name))])])};
+  var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"section section--invert dashboard"},[_c('h2',[_vm._v("Dashboard")]),_vm._v(" "),_c('p',[_vm._v("Name: "+_vm._s(_vm.user.username))]),_vm._v(" "),_c('a',{attrs:{"href":"api/logout"}},[_vm._v("logout")]),_vm._v(" "),_c('h3',[_vm._v("Characters")]),_vm._v(" "),_c('ul',{staticClass:"grid grid--gutter characters"},_vm._l((_vm.characters),function(character){return _c('li',{key:character.name,staticClass:"character"},[_c('img',{attrs:{"src":character.image,"alt":""}}),_vm._v("\n\t\t\t\t"+_vm._s(character.name)+"\n\t\t\t\t"+_vm._s(character.dem)+"\n\t\t\t")])}),0)])};
   var __vue_staticRenderFns__$2 = [];
 
     /* style */
@@ -15456,6 +15462,7 @@
   //
   //
   //
+  //
 
   var script$5 = {
     name: 'characterform',
@@ -15492,9 +15499,10 @@
     methods: {
       onSubmit: function() {
         if (this.character.name === '') {
-          this.errorsPresent = true;
+  		this.errorsPresent = true;
         } else {
-          this.$emit('createOrUpdate', this.character);
+  		this.$emit('createOrUpdate', this.character);
+  		this.$router.push('dashboard'); 
         }
       }
     }
@@ -15504,8 +15512,8 @@
   const __vue_script__$5 = script$5;
 
   /* template */
-  var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('form',{attrs:{"action":"#"},on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.errorsPresent)?_c('p',{staticClass:"error"},[_vm._v("Please fill out all fields!")]):_vm._e(),_vm._v(" "),_c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.name),expression:"character.name"}],attrs:{"type":"text","placeholder":"Your Name","name":"name"},domProps:{"value":(_vm.character.name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "name", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.id),expression:"character.id"}],attrs:{"type":"number","placeholder":"id","name":"id"},domProps:{"value":(_vm.character.id)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "id", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.bio),expression:"character.bio"}],attrs:{"placeholder":"Bio","name":"bio"},domProps:{"value":(_vm.character.bio)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "bio", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.strength),expression:"character.basestats.strength"}],attrs:{"type":"number","placeholder":"Strength","name":"strength"},domProps:{"value":(_vm.character.basestats.strength)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "strength", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.perception),expression:"character.basestats.perception"}],attrs:{"type":"number","placeholder":"Perception","name":"perception"},domProps:{"value":(_vm.character.basestats.perception)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "perception", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.endurance),expression:"character.basestats.endurance"}],attrs:{"type":"number","placeholder":"Endurance","name":"endurance"},domProps:{"value":(_vm.character.basestats.endurance)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "endurance", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.charisma),expression:"character.basestats.charisma"}],attrs:{"type":"number","placeholder":"Charisma","name":"charisma"},domProps:{"value":(_vm.character.basestats.charisma)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "charisma", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.intelligence),expression:"character.basestats.intelligence"}],attrs:{"type":"number","placeholder":"Intelligence","name":"intelligence"},domProps:{"value":(_vm.character.basestats.intelligence)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "intelligence", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.agility),expression:"character.basestats.agility"}],attrs:{"type":"number","placeholder":"Agility","name":"agility"},domProps:{"value":(_vm.character.basestats.agility)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "agility", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.luck),expression:"character.basestats.luck"}],attrs:{"type":"number","placeholder":"Luck","name":"luck"},domProps:{"value":(_vm.character.basestats.luck)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "luck", $event.target.value);}}})]),_vm._v(" "),_vm._m(0)])])])};
-  var __vue_staticRenderFns__$5 = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Login"}})])}];
+  var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n\t"+_vm._s(_vm.message)+"\n\t"),_c('form',{attrs:{"action":"#"},on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.errorsPresent)?_c('p',{staticClass:"error"},[_vm._v("Please fill out all fields!")]):_vm._e(),_vm._v(" "),_c('ul',{staticClass:"form-fields"},[_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.name),expression:"character.name"}],attrs:{"type":"text","placeholder":"Your Name","name":"name"},domProps:{"value":(_vm.character.name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "name", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.id),expression:"character.id"}],attrs:{"type":"number","placeholder":"id","name":"id"},domProps:{"value":(_vm.character.id)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "id", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.bio),expression:"character.bio"}],attrs:{"placeholder":"Bio","name":"bio"},domProps:{"value":(_vm.character.bio)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "bio", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.image),expression:"character.image"}],attrs:{"type":"text","name":"image","placeholder":"Image URL"},domProps:{"value":(_vm.character.image)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character, "image", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.strength),expression:"character.basestats.strength"}],attrs:{"type":"number","placeholder":"Strength","name":"strength"},domProps:{"value":(_vm.character.basestats.strength)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "strength", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.perception),expression:"character.basestats.perception"}],attrs:{"type":"number","placeholder":"Perception","name":"perception"},domProps:{"value":(_vm.character.basestats.perception)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "perception", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.endurance),expression:"character.basestats.endurance"}],attrs:{"type":"number","placeholder":"Endurance","name":"endurance"},domProps:{"value":(_vm.character.basestats.endurance)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "endurance", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.charisma),expression:"character.basestats.charisma"}],attrs:{"type":"number","placeholder":"Charisma","name":"charisma"},domProps:{"value":(_vm.character.basestats.charisma)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "charisma", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.intelligence),expression:"character.basestats.intelligence"}],attrs:{"type":"number","placeholder":"Intelligence","name":"intelligence"},domProps:{"value":(_vm.character.basestats.intelligence)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "intelligence", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.agility),expression:"character.basestats.agility"}],attrs:{"type":"number","placeholder":"Agility","name":"agility"},domProps:{"value":(_vm.character.basestats.agility)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "agility", $event.target.value);}}})]),_vm._v(" "),_c('li',{staticClass:"form-field"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.character.basestats.luck),expression:"character.basestats.luck"}],attrs:{"type":"number","placeholder":"Luck","name":"luck"},domProps:{"value":(_vm.character.basestats.luck)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.character.basestats, "luck", $event.target.value);}}})]),_vm._v(" "),_vm._m(0)])])])};
+  var __vue_staticRenderFns__$5 = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"form-field"},[_c('input',{staticClass:"button",attrs:{"type":"submit","value":"Save"}})])}];
 
     /* style */
     const __vue_inject_styles__$5 = undefined;

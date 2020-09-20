@@ -80,7 +80,7 @@ router.get("/user", authMiddleware, function(req, res) {
 // List user's characters
 router.get("/get_characters", authMiddleware, function(req, res) {
 	console.log("Getting characters of: " + req.user._id);
-	characters.findOne({'owner': req.user._id}, function(err,obj) { 
+	characters.find({'owner': req.user._id}, function(err,obj) { 
 		if (err) {
 			console.log(err);
 			console.log('Characters not found on this owner');

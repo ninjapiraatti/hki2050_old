@@ -1,10 +1,16 @@
 <template>
-	<div class="section section--invert">    
+	<div class="section section--invert dashboard">    
 		<h2>Dashboard</h2>    
 		<p>Name: {{ user.username }}</p>
 		<a href="api/logout">logout</a>
 		<h3>Characters</h3>
-		<div>{{ character.name }}</div>   
+		<ul class="grid grid--gutter characters">
+			<li v-for="character in characters" :key="character.name" class="character">
+				<img :src="character.image" alt="">
+				{{ character.name }}
+				{{ character.dem }}
+			</li>
+		</ul>
     </div>
 </template>
 
@@ -16,9 +22,9 @@
                 user: {    
                     username: "User"    
 				},
-				character: {
-					name: "Adam Jensen"
-				}
+				characters: [
+
+				]
             }    
         },   
         methods: {    
@@ -33,7 +39,7 @@
 				.then((response) => response.json())
 				.then(response => { 
 					console.log(response.name);
-					self.$set(this, "character", response);
+					self.$set(this, "characters", response);
 				})    
 				.catch((errors) => {    
 					console.log("Could not get characters");

@@ -295,6 +295,9 @@ body {
   margin-top: 0.75rem;
   padding-top: 0.75rem; }
 
+.dashboard .characters .character {
+  width: 25%; }
+
 /* GRID */
 .grid {
   display: flex;

@@ -7,6 +7,7 @@
 				<li class="form-field"><input type="text" placeholder="Your Name" name="name" v-model="character.name" /></li>
 				<li class="form-field"><input type="number" placeholder="id" name="id" v-model="character.id" /></li>
 				<li class="form-field"><textarea placeholder="Bio" name="bio" v-model="character.bio" /></li>
+				<li class="form-field"><input type="text" name="image" placeholder="Image URL" v-model="character.image" /></li>
 				<li class="form-field"><input type="number" placeholder="Strength" name="strength" v-model="character.basestats.strength" /></li>
 				<li class="form-field"><input type="number" placeholder="Perception" name="perception" v-model="character.basestats.perception" /></li> 
 				<li class="form-field"><input type="number" placeholder="Endurance" name="endurance" v-model="character.basestats.endurance" /></li> 
@@ -14,7 +15,7 @@
 				<li class="form-field"><input type="number" placeholder="Intelligence" name="intelligence" v-model="character.basestats.intelligence" /></li> 
 				<li class="form-field"><input type="number" placeholder="Agility" name="agility" v-model="character.basestats.agility" /></li> 
 				<li class="form-field"><input type="number" placeholder="Luck" name="luck" v-model="character.basestats.luck" /></li> 
-				<li class="form-field"><input type="submit" class="button" value="Login" /></li>
+				<li class="form-field"><input type="submit" class="button" value="Save" /></li>
 			</ul>
 		</form>    
 	</div>
@@ -56,9 +57,10 @@ export default {
   methods: {
     onSubmit: function() {
       if (this.character.name === '') {
-        this.errorsPresent = true;
+		this.errorsPresent = true;
       } else {
-        this.$emit('createOrUpdate', this.character);
+		this.$emit('createOrUpdate', this.character);
+		this.$router.push('dashboard'); 
       }
     }
   }
