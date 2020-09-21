@@ -5,6 +5,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 //const LocalStrategy = require('passport-local').Strategy
 const characters = require('../models/characters');
+const items = require('../models/items');
 const User = require('../models/muser');
 router.use(express.json());
 
@@ -25,7 +26,22 @@ router.post("/register", function(req, res) {
 	User.register(new User({username: req.body.name}), req.body.password); // Is this safe?
 });
 
-// Create route
+// Create item
+router.post("/create_item", function(req, res) {
+	console.log(req.body)
+	items.insertMany(req.body, function(err, result) {
+		if (err) {
+			//console.log(err);
+			console.log('Item creation failed');
+			res.json(err);
+		} else {
+			console.log('Item created');
+			res.json(result);
+		}
+	});
+});
+
+// Create character
 router.post("/create", function(req, res) {
 	console.log(req.body)
 	characters.insertMany(req.body, function(err, result) {
