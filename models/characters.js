@@ -8,7 +8,7 @@ let characterSchema = new Schema(
       type: String
 	},
 	id: {
-		type: Number
+		type: String
 	},
     age: {
       type: Number

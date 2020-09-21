@@ -30,12 +30,26 @@ router.post("/create", function(req, res) {
 	console.log(req.body)
 	characters.insertMany(req.body, function(err, result) {
 		if (err) {
-			console.log(err);
+			//console.log(err);
 			console.log('Character creation failed');
 			res.json(err);
 		} else {
 			console.log('Character created');
 			res.json(result);
+		}
+	});
+});
+
+// Edit a character
+router.post("/edit", function(req, res) {
+	//console.log("EDITING " + req.body._id);
+	characters.findOneAndUpdate({'_id': req.body._id}, req.body, {new: true}, function(err,obj) { 
+		if (err) {
+			console.log("\nDID NOT UPDATE CHARACTER\n");
+			res.json(err);
+		} else {
+			console.log("\nCharacter updated\n"); 
+			res.json(obj);
 		}
 	});
 });
@@ -84,6 +98,21 @@ router.get("/get_characters", authMiddleware, function(req, res) {
 		if (err) {
 			console.log(err);
 			console.log('Characters not found on this owner');
+			res.json(err);
+		} else {
+			//console.log(obj); 
+			res.json(obj);
+		}
+	});
+});
+
+// Find one character
+router.get("/get_character", authMiddleware, function(req, res) {
+	console.log("Getting ONE character.");
+	characters.findOne({'owner': req.user._id}, function(err,obj) { 
+		if (err) {
+			console.log(err);
+			console.log('ONE character not found on this owner');
 			res.json(err);
 		} else {
 			console.log(obj); 

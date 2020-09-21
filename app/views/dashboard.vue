@@ -7,7 +7,7 @@
 		<ul class="grid grid--gutter characters">
 			<li v-for="character in characters" :key="character.name" class="character">
 				<img :src="character.image" alt="">
-				{{ character.name }}
+				<router-link :to="{ name: 'character', params: { id: character._id }}">{{ character.name }}</router-link>
 				{{ character.dem }}
 			</li>
 		</ul>
@@ -38,7 +38,7 @@
 				fetch('api/get_characters', {method: 'GET'})
 				.then((response) => response.json())
 				.then(response => { 
-					console.log(response.name);
+					console.log(response);
 					self.$set(this, "characters", response);
 				})    
 				.catch((errors) => {    

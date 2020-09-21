@@ -6,6 +6,7 @@ import Logout from '../views/logout.vue'
 import Dashboard from '../views/dashboard.vue'
 import Register from '../views/register.vue'
 import Create from '../views/character_create.vue'
+import Character from '../views/character_edit.vue'
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ const router = new Router({
 			path: '/create',
 			name: 'create',
 			component: Create
+		},
+		{
+			path: '/character/:id',
+			name: 'character',
+			component: Character
 		},
 		{
 			path: '/logout',

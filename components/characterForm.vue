@@ -5,7 +5,7 @@
 			<p v-if="errorsPresent" class="error">Please fill out all fields!</p>
 			<ul class="form-fields">
 				<li class="form-field"><input type="text" placeholder="Your Name" name="name" v-model="character.name" /></li>
-				<li class="form-field"><input type="number" placeholder="id" name="id" v-model="character.id" /></li>
+				<li class="form-field"><input type="text" placeholder="id" name="id" v-model="character.id" /></li>
 				<li class="form-field"><textarea placeholder="Bio" name="bio" v-model="character.bio" /></li>
 				<li class="form-field"><input type="text" name="image" placeholder="Image URL" v-model="character.image" /></li>
 				<li class="form-field"><input type="number" placeholder="Strength" name="strength" v-model="character.basestats.strength" /></li>
@@ -60,7 +60,7 @@ export default {
 		this.errorsPresent = true;
       } else {
 		this.$emit('createOrUpdate', this.character);
-		this.$router.push('dashboard'); 
+		this.$router.push('/dashboard'); 
       }
     }
   }
