@@ -26,7 +26,7 @@ select,
 textarea {
 	width: 100%;
 	padding: calc(#{$spacing / 4} - 1px) calc(#{$spacing / 2} - 1px);
-
+	color: $color-brand;
 	font-size: inherit;
 	line-height: inherit;
 	border-radius: 2px;
@@ -40,7 +40,7 @@ textarea {
 }
 
 ::placeholder {
-	color: rgba($color-fg, 0.33);
+	color: rgba($color-brand-2, 0.33);
 	font-weight: lighter;
 }
 

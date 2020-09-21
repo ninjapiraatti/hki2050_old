@@ -2,51 +2,25 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-let characterSchema = new Schema(
+let itemSchema = new Schema(
   {
     name: {
       type: String
     },
-    id: {
-      type: String
-    },
-    age: {
+    condition: {
       type: Number
     },
-    bio: {
+    description: {
       type: String
     },
     image: {
       type: String
     },
-    dem: {
-      type: Number
-    },
-    owner: {
+    amount: {
       type: String
     },
-    basestats: {
-      strength: {
-        type: Number
-      },
-      perception: {
-        type: Number
-      },
-      endurance: {
-        type: Number
-      },
-      charisma: {
-        type: Number
-      },
-      intelligence: {
-        type: Number
-      },
-      agility: {
-        type: Number
-      },
-      luck: {
-        type: Number
-      }
+    damage: {
+      type: String
     },
     basestatmods: {
       strength: {
@@ -146,7 +120,7 @@ let characterSchema = new Schema(
       }
     }
   },
-  { collection: "Characters" }
+  { collection: "Items" }
 );
 
-module.exports = mongoose.model("character", characterSchema);
+module.exports = mongoose.model("item", itemSchema);
