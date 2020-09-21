@@ -1,14 +1,21 @@
 <template>
-	<div class="section section--invert section--login">
-		{{ message }}
-		<h2>Login</h2>    
-		<form v-on:submit="login">
-			<ul class="form-fields">
-				<li class="form-field"><input type="text" placeholder="adamjensen" name="username" /></li> 
-				<li class="form-field"><input type="password" placeholder="password" name="password" /></li>    
-				<li class="form-field"><input type="submit" class="button" value="Login" /></li>
-			</ul>
-		</form> 
+	<div>
+		<div class="section section--hero section--invert">
+			<div class="logo-splash">
+				<img src="/assets/images/logo_hki2050.png" alt="">
+			</div>
+		</div>
+		<div class="section section--invert section--login">
+			{{ message }}
+			<h2>Login</h2>    
+			<form v-on:submit="login">
+				<ul class="form-fields">
+					<li class="form-field"><input type="text" placeholder="adamjensen" name="username" /></li> 
+					<li class="form-field"><input type="password" placeholder="password" name="password" /></li>    
+					<li class="form-field"><input type="submit" class="button" value="Login" /></li>
+				</ul>
+			</form> 
+		</div>
 	</div>
 </template>
 

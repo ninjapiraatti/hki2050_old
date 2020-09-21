@@ -17,10 +17,10 @@ let itemSchema = new Schema(
       type: String
     },
     amount: {
-      type: String
+      type: Number
     },
     damage: {
-      type: String
+      type: Number
     },
     basestatmods: {
       strength: {

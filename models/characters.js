@@ -25,6 +25,9 @@ let characterSchema = new Schema(
     owner: {
       type: String
     },
+    inventory: {
+      type: Object
+    },
     basestats: {
       strength: {
         type: Number
