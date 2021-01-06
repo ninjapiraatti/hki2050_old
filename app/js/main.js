@@ -8,6 +8,7 @@ import Register from '../views/register.vue'
 import Create from '../views/character_create.vue'
 import Character from '../views/character_edit.vue'
 import Item from '../views/item_create.vue'
+import Admin from '../views/admin.vue'
 
 Vue.use(Router);
 
@@ -48,6 +49,11 @@ const router = new Router({
 			path: '/logout',
 			name: 'logout',
 			component: Logout
+		},
+		{
+			path: '/admin',
+			name: 'admin',
+			component: Admin
 		},
 		{
 			path: '*',

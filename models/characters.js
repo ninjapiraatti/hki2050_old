@@ -25,9 +25,10 @@ let characterSchema = new Schema(
     owner: {
       type: String
     },
-    inventory: {
-      type: Object
-    },
+    inventory: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'item'
+    }],
     basestats: {
       strength: {
         type: Number
