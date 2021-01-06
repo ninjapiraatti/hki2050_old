@@ -2,7 +2,8 @@
 	<div class="section section--invert dashboard">    
 		<h2>Dashboard</h2>    
 		<p>Name: {{ user.username }}</p>
-		<a href="api/logout">logout</a>
+		<a href="api/logout">Log out</a></br >
+		<a href="/create">Create character</a>
 		<h3>Characters</h3>
 		<ul class="grid grid--gutter characters">
 			<li v-for="character in characters" :key="character.name" class="character">
@@ -19,7 +20,7 @@
         name: "Dashboard",    
         data() {    
             return {
-                user: {    
+                user: {
                     username: "User"    
 				},
 				characters: [
