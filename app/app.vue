@@ -3,6 +3,7 @@
 		<div class="section section--hero section--invert">
 			<div class="logo-splash">
 				<img src="/assets/images/logo_hki2050.png" alt="">
+				<p>Welcome {{ user.username }}.</p>
 			</div>
 		</div>
 		<div class="section section--invert section--login">
@@ -30,7 +31,7 @@ export default {
 	data() {
 		return {
 			postId: null,
-			session: {
+			user: {
                 username: ""    
 			},
 		};
@@ -64,7 +65,14 @@ export default {
 					})    
 			}    
 			login()    
+		},
+		getUserData: function() {
+			console.log("getUserData fired.");
+			this.$set(this, "user", JSON.parse(localStorage.getItem('user')));
 		}
+	},
+	mounted() {    
+		this.getUserData()
 	}
 }
 </script>

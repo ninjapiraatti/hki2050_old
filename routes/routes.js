@@ -80,7 +80,7 @@ router.post('/login',
 	res.json(req.user);
 });
 
-// Logout route. Replaced with just removing the user from local storage in dashboard.vue.
+// The local storage user seems to stay even if user logs out.
 router.get("/logout", function(req, res) {
 	//User.register(new User({username: "tuoppi"}), "p");
 	//User.findOne({'username': req.user.username}, function(err,obj) { console.log(obj.username); });
