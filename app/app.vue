@@ -15,20 +15,24 @@
 				</ul>
 			</form> 
 		</div>
+		<router-view />
 		<navigation />
 	</div>
 </template>
 
 <script>
-import nav from '../components/nav.vue';
+import Nav from '../components/nav.vue';
 export default {
 	name: "App",
 	components: {
-		'navigation': nav
+		'navigation': Nav
   	},
 	data() {
 		return {
-			postId: null
+			postId: null,
+			session: {
+                username: ""    
+			},
 		};
 	},
 	methods: {

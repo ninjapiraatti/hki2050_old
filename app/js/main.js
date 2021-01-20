@@ -1,6 +1,7 @@
 import Vue from 'vue/dist/vue.esm.browser'
 import Router from 'vue-router/dist/vue-router.esm.browser'
 import App from '../app.vue'
+import Home from '../views/home.vue'
 import Notfound from '../app.vue'
 import Dashboard from '../views/dashboard.vue'
 import Register from '../views/register.vue'
@@ -17,12 +18,27 @@ const router = new Router({
 	routes: [
 		{
 			path: '/',
-			component: App
+			component: App,
+			children: [
+				{ path: '/home', name: 'home', component: Home },
+				{ path: '/dashboard', name: 'dashboard', component: Dashboard },
+				{ path: '/register', name: 'register', component: Register },
+				{ path: '/create', name: 'create', component: Create },
+				{ path: '/item', name: 'item', component: Item },
+				{ path: '/admin', name: 'admin', component: Admin },
+				{ path: '/character/:id', name: 'character', component: Character }
+			]
 		},
+		/*
 		{
 			path: '/dashboard',
 			name: 'dashboard',
 			component: Dashboard
+		},
+		{
+			path: '/home',
+			name: 'home',
+			component: Home
 		},
 		{
 			path: '/register',
@@ -49,6 +65,7 @@ const router = new Router({
 			name: 'admin',
 			component: Admin
 		},
+		*/
 		{
 			path: '*',
 			name: '404',
