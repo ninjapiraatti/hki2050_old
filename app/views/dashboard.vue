@@ -2,7 +2,7 @@
 	<div class="section section--invert dashboard">    
 		<h2>Dashboard</h2>    
 		<p>Name: {{ user.username }}</p>
-		<a href="api/logout">Log out</a></br >
+		<a href="api/logout">Log out</a><br />
 		<a href="/create">Create character</a>
 		<h3>Characters</h3>
 		<ul class="grid grid--gutter characters">
@@ -17,7 +17,7 @@
 
 <script> 
     export default {    
-        name: "Dashboard",    
+        name: "Dashboard",
         data() {    
             return {
                 user: {
@@ -28,7 +28,7 @@
 				]
             }    
         },   
-        methods: {    
+        methods: {
             getUserData: function() {
 				console.log("getUserData fired.");
 				this.$set(this, "user", JSON.parse(localStorage.getItem('user')));
@@ -45,7 +45,7 @@
 				.catch((errors) => {    
 					console.log("Could not get characters");
 					console.log(errors);
-					this.$router.push('/create'); 
+					//this.$router.push('/create'); 
 				})    
 			}
 		}, 

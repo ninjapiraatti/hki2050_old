@@ -2,7 +2,6 @@ import Vue from 'vue/dist/vue.esm.browser'
 import Router from 'vue-router/dist/vue-router.esm.browser'
 import App from '../app.vue'
 import Notfound from '../app.vue'
-import Logout from '../views/logout.vue'
 import Dashboard from '../views/dashboard.vue'
 import Register from '../views/register.vue'
 import Create from '../views/character_create.vue'
@@ -46,11 +45,6 @@ const router = new Router({
 			component: Character
 		},
 		{
-			path: '/logout',
-			name: 'logout',
-			component: Logout
-		},
-		{
 			path: '/admin',
 			name: 'admin',
 			component: Admin
@@ -64,6 +58,6 @@ const router = new Router({
 });
 
 new Vue({
-  router,
-  template: '<router-view></router-view>',
-  }).$mount('#app')
+	router,
+	template: '<router-view></router-view>',
+}).$mount('#app')

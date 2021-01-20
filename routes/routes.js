@@ -80,11 +80,12 @@ router.post('/login',
 	res.json(req.user);
 });
 
-// Logout route
+// Logout route. Replaced with just removing the user from local storage in dashboard.vue.
 router.get("/logout", function(req, res) {
 	//User.register(new User({username: "tuoppi"}), "p");
-	User.findOne({'username': req.user.username}, function(err,obj) { console.log(obj.username); });
+	//User.findOne({'username': req.user.username}, function(err,obj) { console.log(obj.username); });
 	req.logout();
+	res.redirect('/');
 	console.log("logged out")
 	return res.send();
 });
@@ -110,7 +111,7 @@ router.get("/user", authMiddleware, function(req, res) {
 // List user's characters
 router.get("/get_characters", authMiddleware, function(req, res) {
 	console.log("Getting characters of: " + req.user._id);
-	if (req.user._id == "5f365f89f8740c082db27b5a") {
+	if (req.user._id == "5f365f89f8740c082db27b5a") { // Hardcoded admin. Not a good practice.
 		query = {};
 	} else {
 		query = {'owner': req.user._id};
