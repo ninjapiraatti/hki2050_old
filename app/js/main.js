@@ -60,4 +60,4 @@ const router = new Router({
 new Vue({
 	router,
 	template: '<router-view></router-view>',
-}).$mount('#app')
+}).$mount('#hki2050')

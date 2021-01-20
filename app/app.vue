@@ -6,7 +6,6 @@
 			</div>
 		</div>
 		<div class="section section--invert section--login">
-			{{ message }}
 			<h2>Login</h2>    
 			<form v-on:submit="login">
 				<ul class="form-fields">
@@ -16,12 +15,17 @@
 				</ul>
 			</form> 
 		</div>
+		<navigation />
 	</div>
 </template>
 
 <script>
+import nav from '../components/nav.vue';
 export default {
 	name: "App",
+	components: {
+		'navigation': nav
+  	},
 	data() {
 		return {
 			postId: null
