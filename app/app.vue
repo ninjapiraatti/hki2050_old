@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<div class="section section--hero section--invert">
+		<div v-if='currentpath == "/"' class="section section--hero section--invert">
 			<div class="logo-splash">
 				<img src="/assets/images/logo_hki2050.png" alt="">
 				<p>Welcome {{ user.username }}.</p>
 			</div>
 		</div>
-		<div class="section section--invert section--login">
+		<div v-if='currentpath == "/"' class="section section--invert section--login">
 			<h2>Login</h2>    
 			<form v-on:submit="login">
 				<ul class="form-fields">
@@ -34,6 +34,7 @@ export default {
 			user: {
                 username: ""    
 			},
+			currentpath: this.$router.currentRoute.path
 		};
 	},
 	methods: {
