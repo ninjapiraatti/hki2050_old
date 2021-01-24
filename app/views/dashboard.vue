@@ -7,9 +7,11 @@
 		<h3>Characters</h3>
 		<ul class="grid grid--gutter characters">
 			<li v-for="character in characters" :key="character.name" class="character">
-				<img :src="character.image" alt="">
-				<router-link :to="{ name: 'character', params: { id: character._id }}">{{ character.name }}</router-link>
-				{{ character.dem }}
+				<div class="character__wrapper">
+					<img :src="character.image" alt="">
+					<h2 class="h2"><router-link :to="{ name: 'character', params: { id: character._id }}">{{ character.name }}</router-link></h2>
+					{{ character.dem }}
+				</div>
 			</li>
 		</ul>
     </div>
