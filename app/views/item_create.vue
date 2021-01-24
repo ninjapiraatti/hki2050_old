@@ -1,5 +1,5 @@
 <template>
-	<div class="section section--invert section--login">
+	<div class="section  section--login">
     <h2>New item</h2>
     <itemform @createOrUpdate="createOrUpdate"></itemform>
 	</div>
