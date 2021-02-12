@@ -53,15 +53,15 @@ export default {
 					.then((response) => response.json())
 					.then((response) => {    
 						console.log("Vue got Response");
-						//console.log("Response data: " + response);
+						console.log("Response data: " + response);
 						localStorage.setItem('user', JSON.stringify(response));
-						//console.log(JSON.parse(localStorage.getItem('user')));
+						console.log(JSON.parse(localStorage.getItem('user')));
 						this.$router.push('dashboard');
 					})    
 					.catch((errors) => {    
-						this.flash('Validation failed', 'error');
 						console.log("Vue got Error");
 						console.log("Error data: " + response);
+						this.flash('Validation failed', 'error');
 						this.$router.push('logout');
 					})    
 			}    
