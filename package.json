@@ -12,30 +12,30 @@
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^14.0.0",
 		"@rollup/plugin-json": "^4.1.0",
+		"@rollup/plugin-replace": "^2.3.4",
+		"@vue/compiler-sfc": "^3.0.5",
 		"autoprefixer": "^9.8.6",
 		"chokidar": "^3.4.2",
-		"node-sass": "^4.13.0",
 		"nodemon": "^2.0.4",
-		"postcss": "^7.0.23"
+		"postcss": "^7.0.23",
+		"sass": "^1.30.0"
 	},
 	"dependencies": {
-		"@rollup/plugin-node-resolve": "^8.4.0",
-		"@vue/compiler-sfc": "^3.0.0-rc.10",
+		"@rollup/plugin-node-resolve": "^11.0.0",
 		"axios": "^0.21.1",
 		"cookie-parser": "~1.4.4",
 		"cookie-session": "^1.4.0",
 		"debug": "~2.6.9",
-		"express": "~4.16.1",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
 		"mongoose": "^5.10.2",
 		"morgan": "~1.9.1",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
 		"passport-local-mongoose": "^6.0.1",
-		"rollup": "^2.26.9",
-		"rollup-plugin-vue": "^5.1.9",
-		"vue": "^2.6.12",
-		"vue-cookies": "^1.7.4",
-		"vue-router": "^3.4.3",
-		"vue-template-compiler": "^2.6.12"
+		"rollup": "^2.34.2",
+		"rollup-plugin-vue": "^6.0.0",
+		"vue": "^3.0.5",
+		"vue-router": "^4.0.2"
 	}
 }

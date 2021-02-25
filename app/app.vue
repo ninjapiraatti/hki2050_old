@@ -34,7 +34,7 @@ export default {
 			user: {
                 username: ""    
 			},
-			currentpath: this.$router.currentRoute.path
+			currentpath: this.$router.currentRoute.value.path
 		};
 	},
 	methods: {
@@ -71,9 +71,10 @@ export default {
 			console.log("getUserData fired.");
 			this.$set(this, "user", JSON.parse(localStorage.getItem('user')));
 		}
-	},
+	}
+	/*
 	mounted() {    
 		this.getUserData()
-	}
+	}*/
 }
 </script>

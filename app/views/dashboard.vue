@@ -32,17 +32,15 @@
         },   
         methods: {
             getUserData: function() {
-				console.log("getUserData fired.");
-				this.$set(this, "user", JSON.parse(localStorage.getItem('user')));
+				this.user = JSON.parse(localStorage.getItem('user'))
 			},
 			getCharacterData: function() {
-				console.log("getCharacterData fired.");
-                let self = this    
+				console.log("getCharacterData fired.");   
 				fetch('api/get_characters', {method: 'GET'})
 				.then((response) => response.json())
 				.then(response => { 
 					console.log(response);
-					self.$set(this, "characters", response);
+					this.characters = response;
 				})    
 				.catch((errors) => {    
 					console.log("Could not get characters");
