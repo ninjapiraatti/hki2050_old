@@ -72,9 +72,5 @@ export default {
 			this.$set(this, "user", JSON.parse(localStorage.getItem('user')));
 		}
 	}
-	/*
-	mounted() {    
-		this.getUserData()
-	}*/
 }
 </script>

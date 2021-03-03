@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import FlashMessage from '@smartweb/vue-flash-message';
 import { createRouter, createWebHistory } from 'vue-router'
 import App from '../app.vue'
 import Home from '../views/home.vue'
@@ -71,6 +72,7 @@ const router = createRouter({
 
 const app = createApp(App)
 	.use(router)
+	.use(FlashMessage)
 router.isReady()
 	.then(() => app.mount('#hki2050'))
 

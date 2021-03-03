@@ -1,6 +1,7 @@
 <template>
 	<div class="section dashboard">    
 		<h2>Dashboard</h2>    
+		<FlashMessage />
 		<p>Name: {{ user.username }}</p>
 		<a href="api/logout">Log out</a><br />
 		<a href="/create">Create character</a>
@@ -51,7 +52,12 @@
 		}, 
 		mounted() {    
 			this.getUserData()
-			this.getCharacterData()  
+			this.getCharacterData()
+			this.$flashMessage.show({
+				type: 'error',
+				title: 'Error Message Title',
+				message: 'Oh, you broke my heart! Shame on you!'
+			});
 		}
     }
 </script>
