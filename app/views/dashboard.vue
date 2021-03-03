@@ -1,7 +1,7 @@
 <template>
 	<div class="section dashboard">    
 		<h2>Dashboard</h2>    
-		<FlashMessage />
+		<FlashMessage position="right top"/>
 		<p>Name: {{ user.username }}</p>
 		<a href="api/logout">Log out</a><br />
 		<a href="/create">Create character</a>
@@ -42,6 +42,11 @@
 				.then(response => { 
 					console.log(response);
 					this.characters = response;
+					this.$flashMessage.show({
+						type: 'success',
+						title: 'Successfully fetched characters',
+						time: 1000
+					});
 				})    
 				.catch((errors) => {    
 					console.log("Could not get characters");
@@ -53,11 +58,6 @@
 		mounted() {    
 			this.getUserData()
 			this.getCharacterData()
-			this.$flashMessage.show({
-				type: 'error',
-				title: 'Error Message Title',
-				message: 'Oh, you broke my heart! Shame on you!'
-			});
 		}
     }
 </script>
