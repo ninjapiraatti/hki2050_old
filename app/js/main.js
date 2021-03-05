@@ -10,63 +10,22 @@ import Create from '../views/character_create.vue'
 import Character from '../views/character_edit.vue'
 import Item from '../views/item_create.vue'
 import Admin from '../views/admin.vue'
+import Login from '../views/loginForm.vue'
 
 const router = createRouter({
 	mode: 'history',
 	linkActiveClass: 'active',
 	history: createWebHistory(),
 	routes: [
-		{
-			path: '/',
-			component: App,
-			children: [
-				{ path: '/home', name: 'home', component: Home },
-				{ path: '/dashboard', name: 'dashboard', component: Dashboard },
-				{ path: '/register', name: 'register', component: Register },
-				{ path: '/create', name: 'create', component: Create },
-				{ path: '/item', name: 'item', component: Item },
-				{ path: '/admin', name: 'admin', component: Admin },
-				{ path: '/character/:id', name: 'character', component: Character },
-				{ path: '/:pathMatch(.*)*', component: Notfound },
-			]
-		},
-		/*
-		{
-			path: '/dashboard',
-			name: 'dashboard',
-			component: Dashboard
-		},
-		{
-			path: '/home',
-			name: 'home',
-			component: Home
-		},
-		{
-			path: '/register',
-			name: 'register',
-			component: Register
-		},
-		{
-			path: '/create',
-			name: 'create',
-			component: Create
-		},
-		{
-			path: '/item',
-			name: 'item',
-			component: Item
-		},
-		{
-			path: '/character/:id',
-			name: 'character',
-			component: Character
-		},
-		{
-			path: '/admin',
-			name: 'admin',
-			component: Admin
-		},
-		*/
+		{ path: '/', name: 'login', component: Login },
+		{ path: '/home', name: 'home', component: Home },
+		{ path: '/dashboard', name: 'dashboard', component: Dashboard },
+		{ path: '/register', name: 'register', component: Register },
+		{ path: '/create', name: 'create', component: Create },
+		{ path: '/item', name: 'item', component: Item },
+		{ path: '/admin', name: 'admin', component: Admin },
+		{ path: '/character/:id', name: 'character', component: Character },
+		{ path: '/:pathMatch(.*)*', component: Notfound },
 	]
 });
 

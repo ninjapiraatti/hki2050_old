@@ -22,9 +22,7 @@
                 user: {    
                     username: "User"    
 				},
-				characters: [
-
-				]
+				characters: []
             }    
         },   
         methods: {    

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		{{ message }}
+		<!-- <FlashMessage position="right top"/> -->
 		<form action="#" @submit.prevent="onSubmit">
 			<p v-if="errorsPresent" class="error">Please fill out all fields!</p>
 			<ul class="form-fields">
@@ -60,6 +60,13 @@ export default {
 		this.errorsPresent = true;
       } else {
 		this.$emit('createOrUpdate', this.character);
+		/*
+		this.$flashMessage.show({
+			type: 'success',
+			title: 'Success',
+			time: 1000
+		});
+		*/
 		this.$router.push('/dashboard'); 
       }
     }

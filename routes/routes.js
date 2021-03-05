@@ -58,7 +58,7 @@ router.post("/create", function(req, res) {
 
 // Edit a character
 router.post("/edit", function(req, res) {
-	//console.log("EDITING " + req.body._id);
+	console.log("EDITING " + req.body._id);
 	characters.findOneAndUpdate({'_id': req.body._id}, req.body, {new: true}, function(err,obj) { 
 		if (err) {
 			console.log("\nDID NOT UPDATE CHARACTER\n");

@@ -11,7 +11,7 @@
 				<div class="character__wrapper">
 					<img :src="character.image" alt="">
 					<h2 class="h2"><router-link :to="{ name: 'character', params: { id: character._id }}">{{ character.name }}</router-link></h2>
-					{{ character.dem }}
+					{{ character._id }}
 				</div>
 			</li>
 		</ul>
