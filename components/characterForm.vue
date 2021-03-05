@@ -1,6 +1,9 @@
 <template>
 	<div>
 		<!-- <FlashMessage position="right top"/> -->
+		{{ character.name }}
+		{{ character.id }}
+		{{ character.basestats.strength }}
 		<form action="#" @submit.prevent="onSubmit">
 			<p v-if="errorsPresent" class="error">Please fill out all fields!</p>
 			<ul class="form-fields">
