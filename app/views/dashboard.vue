@@ -1,7 +1,7 @@
 <template>
 	<div class="section dashboard">    
 		<h2>Dashboard</h2>    
-		<FlashMessage position="right top"/>
+		<!-- <FlashMessage position="right top"/> -->
 		<p>Name: {{ user.username }}</p>
 		<a href="api/logout">Log out</a><br />
 		<a href="/create">Create character</a>

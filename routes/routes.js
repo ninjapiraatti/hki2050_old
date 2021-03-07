@@ -22,13 +22,13 @@ router.use(passport.session());
 
 // Register route
 router.post("/register", function(req, res) {
-	console.log(req.body)
+	//console.log(req.body)
 	User.register(new User({username: req.body.name}), req.body.password); // Is this safe?
 });
 
 // Create item
 router.post("/create_item", function(req, res) {
-	console.log(req.body)
+	//console.log(req.body)
 	items.insertMany(req.body, function(err, result) {
 		if (err) {
 			//console.log(err);
@@ -43,7 +43,7 @@ router.post("/create_item", function(req, res) {
 
 // Create character
 router.post("/create", function(req, res) {
-	console.log(req.body)
+	//console.log(req.body)
 	characters.insertMany(req.body, function(err, result) {
 		if (err) {
 			//console.log(err);
@@ -110,7 +110,6 @@ router.get("/user", authMiddleware, function(req, res) {
 
 // List user's characters
 router.get("/get_characters", authMiddleware, function(req, res) {
-	console.log("Getting characters of: " + req.user._id);
 	if (req.user._id == "5f365f89f8740c082db27b5a") { // Hardcoded admin. Not a good practice.
 		query = {};
 	} else {
@@ -118,7 +117,7 @@ router.get("/get_characters", authMiddleware, function(req, res) {
 	}
 	characters.find(query, function(err,obj) { 
 		if (err) {
-			console.log(err);
+			//console.log(err);
 			console.log('Characters not found on this owner');
 			res.json(err);
 		} else {
@@ -131,13 +130,14 @@ router.get("/get_characters", authMiddleware, function(req, res) {
 // Find one character
 router.get("/get_character", authMiddleware, function(req, res) {
 	console.log("Getting ONE character.");
-	characters.findOne({'owner': req.user._id}, function(err,obj) { 
+	console.log(req.query.char);
+	characters.findOne({'_id': req.query.char}, function(err,obj) { 
 		if (err) {
-			console.log(err);
+			//console.log(err);
 			console.log('ONE character not found on this owner');
 			res.json(err);
 		} else {
-			console.log(obj); 
+			//console.log(obj); 
 			res.json(obj);
 		}
 	});

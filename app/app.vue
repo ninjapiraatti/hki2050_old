@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<FlashMessage position="right top" />
 		<router-view />
 		<Navigation />
 	</div>

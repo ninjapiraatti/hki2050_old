@@ -24,14 +24,16 @@ export default {
   methods: {
     getOneCharacterData: function() {
       console.log("getOneCharacterData fired."); 
-      fetch('/api/get_character', {method: 'GET'})
+      //fetch('/api/get_character', {method: 'GET'})
+	  fetch(`/api/get_character?char=${this.$route.params.id}`, {method: 'GET'})
       .then((response) => response.json())
       .then(response => { 
 		this.character = response;
+		//console.log(response);
       })    
       .catch((errors) => {    
         console.log("Could not get ONE character");
-        console.log(errors);
+        //console.log(errors);
         this.$router.push('/dashboard'); 
       })    
     },
@@ -40,7 +42,7 @@ export default {
     }
   },
   mounted() {    
-		this.getOneCharacterData()  
+		this.getOneCharacterData()
 	}
 };
 </script>

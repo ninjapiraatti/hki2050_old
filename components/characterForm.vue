@@ -1,9 +1,5 @@
 <template>
 	<div>
-		<!-- <FlashMessage position="right top"/> -->
-		{{ character.name }}
-		{{ character.id }}
-		{{ character.basestats.strength }}
 		<form action="#" @submit.prevent="onSubmit">
 			<p v-if="errorsPresent" class="error">Please fill out all fields!</p>
 			<ul class="form-fields">
@@ -61,16 +57,18 @@ export default {
     onSubmit: function() {
       if (this.character.name === '') {
 		this.errorsPresent = true;
+		this.$flashMessage.show({
+			type: 'error',
+			title: 'Please fill out name.',
+			time: 1000
+		});
       } else {
 		this.$emit('createOrUpdate', this.character);
-		/*
 		this.$flashMessage.show({
 			type: 'success',
 			title: 'Success',
 			time: 1000
 		});
-		*/
-		this.$router.push('/dashboard'); 
       }
     }
   }
