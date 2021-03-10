@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<form action="#" @submit.prevent="onSubmit">
+		<form action="#" @submit.prevent="onSubmit" v-if="'name' in character">
 			<p v-if="errorsPresent" class="error">Please fill out all fields!</p>
 			<ul class="form-fields">
 				<li class="form-field"><input type="text" placeholder="Your Name" name="name" v-model="character.name" /></li>

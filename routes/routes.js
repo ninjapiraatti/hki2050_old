@@ -85,6 +85,7 @@ router.get("/logout", function(req, res) {
 	//User.register(new User({username: "tuoppi"}), "p");
 	//User.findOne({'username': req.user.username}, function(err,obj) { console.log(obj.username); });
 	req.logout();
+	localStorage.setItem('user', {});
 	res.redirect('/');
 	console.log("logged out")
 	return res.send();

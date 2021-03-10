@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<!-- <FlashMessage position="right top"/> -->
 		<div class="section section--hero">
 			<div class="logo-splash">
 				<img src="/assets/images/logo_hki2050.png" alt="">
@@ -48,26 +47,21 @@ export default {
 					console.log("Vue got Response");
 					console.log("Response data: " + response);
 					localStorage.setItem('user', JSON.stringify(response));
-					console.log(JSON.parse(localStorage.getItem('user')));
-					/*
 					this.$flashMessage.show({
 						type: 'success',
 						title: 'Successfully logged in',
 						time: 1000
 					});
-					*/
 					this.$router.push({path: '/dashboard'});
 				})
 				.catch((errors) => { // This is not doing anything
 					//console.log("Vue got Error");
 					//console.log("Error data: " + errors);
-					/*
 					this.$flashMessage.show({
 						type: 'error',
 						title: 'Incorrect credentials',
 						time: 1000
 					});
-					*/
 					console.log("About to log out")
 					this.$router.push({path: '/api/logout'});
 				})    
@@ -75,9 +69,12 @@ export default {
 			login()    
 		},
 		getUserData: function() {
-			console.log("getUserData fired.");
-			this.$set(this, "user", JSON.parse(localStorage.getItem('user')));
+			console.log("getUserData fired.")
+			this.user = JSON.parse(localStorage.getItem('user'))
 		}
+	},
+	mounted() {
+		this.getUserData()
 	}
 }
 </script>
