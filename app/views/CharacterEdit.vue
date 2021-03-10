@@ -10,11 +10,11 @@
   
 
 <script>
-import characterForm from '../../components/characterForm.vue';
+import CharacterForm from '../../components/CharacterForm.vue';
 export default {
   name: 'Character',
   components: {
-    'characterform': characterForm
+    'characterform': CharacterForm
   },
   data: function() {
     return {

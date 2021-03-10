@@ -54,7 +54,7 @@ export default {
 					});
 					this.$router.push({path: '/dashboard'});
 				})
-				.catch((errors) => { // This is not doing anything
+				.catch((errors) => {
 					//console.log("Vue got Error");
 					//console.log("Error data: " + errors);
 					this.$flashMessage.show({

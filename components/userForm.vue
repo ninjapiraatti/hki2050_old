@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'userform',
+  name: 'UserForm',
   props: {
     user: {
       type: Object,

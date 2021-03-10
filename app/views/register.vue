@@ -8,7 +8,7 @@
   
 
 <script>
-import userForm from '../../components/userForm.vue';
+import userForm from '../../components/UserForm.vue';
 export default {
   name: 'Register',
   components: {

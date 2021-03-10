@@ -7,7 +7,7 @@
   
 
 <script>
-import itemForm from '../../components/itemForm.vue';
+import itemForm from '../../components/ItemForm.vue';
 export default {
   name: 'Item',
   components: {

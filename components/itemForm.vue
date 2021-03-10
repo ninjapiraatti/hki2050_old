@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'itemform',
+  name: 'ItemForm',
   props: {
     item: {
       type: Object,
