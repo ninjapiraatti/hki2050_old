@@ -43,10 +43,8 @@ router.post("/create_item", function(req, res) {
 
 // Create character
 router.post("/create", function(req, res) {
-	//console.log(req.body)
 	characters.insertMany(req.body, function(err, result) {
 		if (err) {
-			//console.log(err);
 			console.log('Character creation failed');
 			res.json(err);
 		} else {
@@ -74,20 +72,15 @@ router.post("/edit", function(req, res) {
 router.post('/login',
 	passport.authenticate('local'),
 	function(req, res) {
-	//console.log("Login found a user by name: " + req.user.username);
 	User.findOne({'username': req.user.username}, function(err,obj) { console.log("Login found a user by name: " + obj.username); });
-	//return res.send(req.user);
 	res.json(req.user);
 });
 
 // The local storage user seems to stay even if user logs out.
 router.get("/logout", function(req, res) {
-	//User.register(new User({username: "tuoppi"}), "p");
-	//User.findOne({'username': req.user.username}, function(err,obj) { console.log(obj.username); });
 	req.logout();
 	localStorage.setItem('user', {});
 	res.redirect('/');
-	console.log("logged out")
 	return res.send();
 });
 
@@ -118,11 +111,9 @@ router.get("/get_characters", authMiddleware, function(req, res) {
 	}
 	characters.find(query, function(err,obj) { 
 		if (err) {
-			//console.log(err);
 			console.log('Characters not found on this owner');
 			res.json(err);
 		} else {
-			//console.log(obj); 
 			res.json(obj);
 		}
 	});
@@ -130,15 +121,10 @@ router.get("/get_characters", authMiddleware, function(req, res) {
 
 // Find one character
 router.get("/get_character", authMiddleware, function(req, res) {
-	console.log("Getting ONE character.");
-	console.log(req.query.char);
 	characters.findOne({'_id': req.query.char}, function(err,obj) { 
 		if (err) {
-			//console.log(err);
-			console.log('ONE character not found on this owner');
 			res.json(err);
 		} else {
-			//console.log(obj); 
 			res.json(obj);
 		}
 	});

@@ -40,7 +40,6 @@ export default {
 					"username": username,    
 					"password": password
 				}
-				//fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
 				fetch('api/login', {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)})
 				.then((response) => response.json())
 				.then((response) => {    

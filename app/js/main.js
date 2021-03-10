@@ -34,10 +34,3 @@ const app = createApp(App)
 	.use(FlashMessage)
 router.isReady()
 	.then(() => app.mount('#hki2050'))
-
-/*
-new Vue({
-	router,
-	template: '<router-view></router-view>',
-}).$mount('#hki2050')
-*/
