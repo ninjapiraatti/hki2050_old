@@ -3,7 +3,8 @@
 		<h2>Dashboard</h2>    
 		<p>Name: {{ user.username }}</p>
 		<a href="api/logout">Log out</a><br />
-		<a href="/create">Create character</a>
+		<a href="/create">Create character</a><br />
+		<a v-if="user._id == '5f365f89f8740c082db27b5a'" href="/create">Create item</a>
 		<h3>Characters</h3>
 		<ul class="grid grid--gutter characters">
 			<li v-for="character in characters" :key="character.name" class="character">
