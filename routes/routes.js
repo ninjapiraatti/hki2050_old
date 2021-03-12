@@ -79,7 +79,7 @@ router.post('/login',
 // The local storage user seems to stay even if user logs out.
 router.get("/logout", function(req, res) {
 	req.logout();
-	localStorage.setItem('user', {});
+	//localStorage.setItem('user', {});
 	res.redirect('/');
 	return res.send();
 });
