@@ -6,7 +6,7 @@
 		<a href="/create">Create character</a><br />
 		<a v-if="user._id == '5f365f89f8740c082db27b5a'" href="/item">Create item</a>
 		<h3>Characters</h3>
-		<ul class="grid grid--gutter characters">
+		<ul class="characters">
 			<li v-for="character in characters" :key="character.name" class="character">
 				<div class="character__wrapper">
 					<img :src="character.image" alt="">
